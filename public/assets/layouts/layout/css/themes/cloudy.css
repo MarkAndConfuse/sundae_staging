@@ -1,0 +1,420 @@
+body, .login{
+    background-color: #ffffff;
+    background: url("https://cdn01.psg588.com/prod/psg588-logbkg.jpg") top center no-repeat!important;
+    background-size: cover;
+}
+
+nav.main-navbar-top.navbar.navbar-expand-xl.navbar-dark.bg-dark.fixed-top {
+    background-color: #2BA1F8!important;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.39);
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.nav-item.dropdown,
+.navbar-nav i,
+.navbar-dark .navbar-nav .nav-link:focus,
+.nav-item.dropdown:focus,
+.navbar-nav i:focus{
+    color: #f1f1f1;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .nav-link:hover i,
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .active>.nav-link i{
+    color: #FFFFFF!important;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover i,
+.main-navbar-top .dropdown-item a:hover,
+.navbar-nav .dropdown-menu .dropdown-menu .dropdown-item:hover i,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:hover i{
+    color: #f0f0f0!important;
+}
+
+.dropdown-item a:hover {
+    text-decoration: underline;
+}
+
+.main-navbar-top .dropdown-menu,
+.main-navbar-top .dropdown-item ul{
+    background: #263242;
+    border-color: transparent;
+}
+
+.navbar .dropdown-menu a,
+.navbar-nav .dropdown-menu i,
+.navbar-nav .dropdown-menu .dropdown-menu .dropdown-item i{
+    color: #ffffff!important;
+}
+
+.page-content{
+    background: #f7f7f7!important
+}
+
+.page-content-white .page-bar{
+    background-color: #f7f7f7;
+}
+
+nav hr{
+    border-color: #ffffff52;
+}
+
+hr{
+    border-color: #d8d8d8;
+}
+
+.portlet.light.bordered.filters.bg-grey-steel.bg-font-grey-steel {
+    box-shadow: none;
+}
+
+.refresh-checkbox{
+    background-color: #f7f7f7;
+    color: #59626f;
+}
+
+.page-content-white .page-bar .page-breadcrumb>li>span{
+    color: #8f908f;
+}
+
+.page-content-white .page-content .page-bar,
+.portlet.light.bordered>.portlet-title,
+.portlet>.portlet-title{
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.portlet.light.bordered {
+    border: 1px solid #e2e2e2!important;
+}
+
+.portlet.light {
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    border-bottom-color: transparent;
+}
+
+.portlet.light>.portlet-title>.caption{
+    color: #634f00;
+}
+
+.dashboard-stat.default:hover{
+    background-color: #D0D5DE;
+}
+.dashboard-stat.blue:hover{
+    background-color: #2E8ED1;
+}
+.dashboard-stat.blue-soft:hover{
+    background-color: #3D7AAD;
+}
+.dashboard-stat.blue-chambray:hover{
+    background-color: #212F3F;
+}
+.dashboard-stat.blue-hoki:hover{
+    background-color: #57708E;
+}
+.dashboard-stat.purple:hover{
+    background-color: #793994;
+}
+.dashboard-stat.purple-studio:hover{
+    background-color: #803B9E;
+}
+.dashboard-stat.yellow-haze:hover{
+    background-color: #B5AF5B;
+}
+.dashboard-stat.yellow-casablanca:hover{
+    background-color: #d66840;
+}
+.dashboard-stat.green-haze:hover{
+    background-color: #39A19A;
+}
+.dashboard-stat.red-soft:hover{
+    background-color: #BD4747;
+}
+.dashboard-stat.grey-cascade:hover{
+    background-color: #7E9091;
+}
+.dashboard-stat.red:hover{
+    background-color: #D4434C;
+}
+.dashboard-stat.yellow:hover{
+    background-color: #B5923C;
+}
+.dashboard-stat.green:hover{
+    background-color: #2AB8C5;
+}
+
+.details .desc p {
+    font-size: 14px;
+}
+
+.bg-grey-steel{
+    background-color: #ffffff!important;
+}
+
+.bg-blue{
+    background: #3598dc!important;
+    color: #FFFFFF!important;
+}
+
+thead tr,
+#total-report-table.table-highlighted th,
+#win-loss-agent-data-table tr:hover th,
+#win-loss-player-data-table tr:hover th,
+#win-loss-per-day-data-table tr:hover th,
+#win-loss-player-data-table th.th-align-center.text-right.sorting,
+#table-win-loss-provider th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.dt-body-right.sorting,
+#win-loss-per-day-data-table th.th-align-center.text-right.sorting{
+    background-color: #f5f5f5!important;
+    color: #4e4e4e!important;
+    border-bottom: 1px solid #4e4e4e;
+}
+
+th{
+    border-bottom: 1px solid #8e8e8e!important;
+}
+
+#table-win-loss-sportsbettype tr.dtrg-group td.text-white{
+    background-color: #bdbdbd!important;
+    color: #484848!important;
+}
+
+.pagination .active a {
+    background: #dedede;
+    border-color: #dedede;
+    color: #484848;
+}
+
+.pagination a{
+    color: #484848;
+}
+
+table.dataTable tr.dtrg-group td {
+    background-color: #e0e0e0;
+}
+
+#table-win-loss-sportsbettype tbody tr:last-child,
+#win-loss-agent-data-table tbody tr:last-child,
+#win-loss-agent-data-table tr:last-child td.dt-body-left.sorting_1,
+#win-loss-agent-data-table tr:last-child td.sorting_1.lay-odds,
+#win-loss-player-data-table tr:last-child,
+#win-loss-player-data-table tr:last-child td.sorting_1,
+#table-win-loss-provider tr:last-child,
+#table-win-loss-provider tr:last-child td.sorting_1,
+#win-loss-agent-data-table tr:last-child td.sorting_1,
+#win-loss-per-bet-data-table tr:last-child,
+#win-loss-per-bet-data-table tr:last-child td.sorting_1,
+#win-loss-per-day-data-table tr:last-child,
+#win-loss-per-day-data-table tr:last-child td.sorting_1,
+#total-report-table tr:last-child td {
+    background: #c1c1c1!important;
+    color: #3a3a3a;
+}
+
+#total-report-table tr:last-child td.dataTables_empty{
+    font-weight: 400;
+    color: #6d6d6d;
+}
+
+.btn.btn-outline.blue-madison{
+    border-color: #263242;
+    color: #263242;
+}
+
+#quick-manage-balance .btn.btn-primary.btn-block,
+#quick-manage-balance .btn.btn-outline-primary.active,
+#quick-manage-balance .btn.btn-outline-primary.btn-block,
+#quick-manage-balance .btn.btn-outline-primary{
+    background: #E7505A;
+    border-color: #E7505A;
+    color: #FFFFFF;
+}
+
+#quick-manage-balance .btn-group-toggle .btn.btn-outline-primary.btn-block,
+#quick-manage-balance .btn-group-toggle .btn.btn-outline-primary{
+    border-color: #c5c5c5;
+    background: #c5c5c5;
+    color: #ffffff;
+}
+
+#quick-manage-balance .btn.btn-outline-primary.active:hover,
+#quick-manage-balance .btn.btn-outline-primary:hover,
+#quick-manage-balance .btn.btn-outline-primary.active,
+#quick-manage-balance .btn.btn-outline-primary.btn-block:hover{
+    background: #C83D46;
+    border-color: #C83D46;
+}
+
+#quick-manage-balance .btn.btn-primary.btn-block{
+    background: #26C281;
+    border-color: #26C281;
+    color: #FFFFFF;
+}
+
+#quick-manage-balance .btn.btn-primary.btn-block:hover{
+    background: #18AA6D;
+    border-color: #18AA6D;
+}
+
+.btn.btn-outline.blue-madison.active,
+.btn.btn-outline.blue-madison:active,
+.btn.btn-outline.blue-madison:active:focus,
+.btn.btn-outline.blue-madison:active:hover,
+.btn.btn-outline.blue-madison:focus,
+.btn.btn-outline.blue-madison:hover{
+    background: #35393b;
+    border-color: #35393b;
+    color: #FFFFFF;
+}
+
+.btn.grey-gallery:not(.btn-outline),
+.btn.grey-gallery:not(.btn-outline):focus{
+    background-color: #263242;
+    border-color: #263242;
+    color: white;
+}
+
+#refreshBtn,
+#export-btnResponsive{
+    background: transparent!important;
+    border-color: #263242!important;
+    color: #263242!important;
+}
+
+#refreshBtn:hover,
+#export-btnResponsive:hover{
+    background: #263242!important;
+    color: #FFFFFF!important;
+}
+
+.portlet.light.bordered {
+    box-shadow: rgba(0,0,0,0) 0 0 0 0;
+}
+
+.table-scrollable {
+    border-color: transparent;
+}
+
+.sidebar-layout a{
+    color: #737373;
+}
+
+.sidebar-layout ul li a:hover{
+    background: #e0e0e0;
+    color: #505050;
+}
+
+.modal.fade.edit-account a.btn.grey-gallery:hover {
+    color: #FFFFFF;
+}
+
+.modal-content {
+    background: #ffffff;
+    border: none;
+}
+
+/* Login */
+.login .page-wrapper,
+.login .page-content{
+    background: transparent!important;
+}
+
+.login .content{
+    border-radius: 5px!important;
+    background: #f7f7f7;
+}
+
+.login .content h3 {
+    color: #263242!important;
+}
+
+.login .content .form-control{
+    background: transparent!important;
+    /* border: 1px solid #c7c7c7!important; */
+    color: #000000;
+}
+
+.login .content .form-actions {
+    border-bottom: 1px solid transparent;
+}
+
+#loginForm .form-group .btn.btn-success {
+    color: #8e8e8e;
+}
+
+.login button[type="submit"],
+.login button[type="submit"]:active{
+    border-color: transparent!important;
+    color: #ffffff!important;
+    background-color: #2BA1F8!important;
+}
+
+.modal-dialog{
+    box-shadow: 0px 5px 5px #7f7f7f;
+}
+
+.badge-primary {
+    background-color: #fcff24;
+    color: black;
+    font-weight: 400;
+}
+
+.main-navbar-top .dropdown-submenu>.dropdown-menu{
+    background: #1d2735;
+}
+
+#win-loss-agent-data-table tr:first-child th[colspan="1"][rowspan="1"],
+#win-loss-player-data-table tr:first-child th[colspan="1"][rowspan="1"],
+#win-loss-per-day-data-table tr:first-child th[colspan="1"][rowspan="1"],
+#table-win-loss-provider tr:first-child th[colspan="1"][rowspan="1"],
+#win-loss-per-bet-data-table tr:first-child th[colspan="1"][rowspan="1"]{
+    border-bottom: 1px solid transparent!important;
+}
+
+@media screen and (min-width: 992px){
+    .page-bar{
+        margin-top: 5px!important;
+    }
+}
+
+.calendar-table .table-condensed thead tr{
+    background-color: #f1f4f7!important;
+}
+
+.calendar-table .table-condensed thead th{
+    border-bottom-color: transparent!important;
+}
+
+.dropdown-menu-agentlist li a:hover,
+.dropdown-menu-agentlist li a:hover i {
+    color: #000000!important;
+    background: #f2f2f2;
+}
+
+#quick-manage-balance .btn.btn-outline-primary.active .text-center,
+#frmTransfer input[type="checkbox"]:checked+label .text-center{
+    color: #2ba1f8;
+}
+
+.portlet .profile-section {
+    border-top: 1px solid #d8d8d8;
+}
+
+.sidebar-layout ul li a:hover,
+.sidebar-layout ul li:hover {
+    background: #e0e0e0;
+}
+
+.modal-header.bg-green-jungle,
+.modal .bg-blue,
+.modal .bg-red,
+.modal-header {
+    background: #2ba1f8!important;
+}

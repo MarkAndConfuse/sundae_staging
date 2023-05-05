@@ -1,0 +1,455 @@
+body, .login {
+    background-color: #fffbf1;
+    background: url("https://cdn01.manta88.com/prod/mantabet-logbkg1.jpg") top center no-repeat!important;
+    background-size: cover;
+}
+
+nav.main-navbar-top.navbar.navbar-expand-xl.navbar-dark.bg-dark.fixed-top {
+    background-image: linear-gradient(to right, #fff6c7 00%, #F4CF7B 30%, #F4CF7B 60%, #FBE88A 100%)!important;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-dark .navbar-toggler-icon{
+    filter: invert(1);
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(0,0,0,.3);
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.nav-item.dropdown,
+.navbar-nav i,
+.navbar-dark .navbar-nav .nav-link:focus,
+.nav-item.dropdown:focus,
+.navbar-nav i:focus{
+    color: #634f00;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .nav-link:hover i,
+.navbar-nav .dropdown-menu .dropdown-item:hover i,
+.main-navbar-top .dropdown-item a:hover,
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .active>.nav-link i,
+.navbar-nav .dropdown-menu .dropdown-menu .dropdown-item:hover i,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:hover i{
+    color: #000000!important;
+}
+
+.main-navbar-top .dropdown-menu,
+.main-navbar-top .dropdown-item ul{
+    background: #ffffff;
+    /* border-color: transparent; */
+    border: 1px solid #c3c3c3;
+}
+
+.navbar .dropdown-menu a,
+.navbar-nav .dropdown-menu i,
+.navbar-nav .dropdown-menu .dropdown-menu .dropdown-item i{
+    color: #525252!important;
+}
+
+.page-content,
+.page-content-white .page-bar{
+    background-color: #fffbf1;
+}
+
+nav hr{
+    border-color: #634f00;
+}
+
+nav li.dropdown-item hr {
+    border-color: #cacaca;
+}
+
+hr{
+    border-color: #efe3c9;
+}
+
+.portlet.light.bordered.filters.bg-grey-steel.bg-font-grey-steel {
+    box-shadow: none;
+}
+
+.refresh-checkbox{
+    background-color: #fffbf1;
+    color: #634f00;
+}
+
+.page-content-white .page-bar .page-breadcrumb>li>span{
+    color: #868068;
+}
+
+.page-content-white .page-content .page-bar,
+.portlet.light.bordered>.portlet-title,
+.portlet>.portlet-title{
+    border-bottom: 1px solid #efe3c9;
+}
+
+.portlet.light.bordered {
+    border: 1px solid #efe3c9!important;
+}
+
+.portlet.light {
+    background-color: #ffffff;
+    border: 1px solid #efe3c9;
+    border-bottom-color: transparent;
+}
+
+.portlet.light>.portlet-title>.caption{
+    color: #634f00;
+}
+
+.dashboard-stat.default,
+.dashboard-stat.blue,
+.dashboard-stat.blue-soft,
+.dashboard-stat.blue-chambray,
+.dashboard-stat.blue-hoki,
+.dashboard-stat.purple,
+.dashboard-stat.purple-studio,
+.dashboard-stat.yellow-haze,
+.dashboard-stat.yellow-casablanca,
+.dashboard-stat.yellow-crusta,
+.dashboard-stat.green-haze,
+.dashboard-stat.red-soft,
+.dashboard-stat.grey-cascade,
+.dashboard-stat.red,
+.dashboard-stat.red-flamingo,
+.dashboard-stat.yellow,
+.dashboard-stat.green,
+.dashboard-stat.green-meadow{
+    background-color: #efefef;
+}
+
+.dashboard-stat.default:hover,
+.dashboard-stat.blue:hover,
+.dashboard-stat.blue-soft:hover,
+.dashboard-stat.blue-chambray:hover,
+.dashboard-stat.blue-hoki:hover,
+.dashboard-stat.purple:hover,
+.dashboard-stat.purple-studio:hover,
+.dashboard-stat.yellow-haze:hover,
+.dashboard-stat.yellow-casablanca:hover,
+.dashboard-stat.yellow-crusta:hover,
+.dashboard-stat.green-haze:hover,
+.dashboard-stat.red-soft:hover,
+.dashboard-stat.grey-cascade:hover,
+.dashboard-stat.red:hover,
+.dashboard-stat.red-flamingo:hover,
+.dashboard-stat.yellow:hover,
+.dashboard-stat.green:hover,
+.dashboard-stat.green-meadow:hover{
+    background-color: #e2e2e2;
+}
+
+.dashboard-stat.blue .details .desc,
+.dashboard-stat.blue .visual>i,
+.dashboard-stat.blue .details .number,
+.dashboard-stat.blue-soft .details .desc,
+.dashboard-stat.blue-soft .visual>i,
+.dashboard-stat.blue-soft .details .number,
+.dashboard-stat.blue-chambray .details .desc,
+.dashboard-stat.blue-chambray .visual>i,
+.dashboard-stat.blue-chambray .details .number,
+.dashboard-stat.blue-hoki .details .desc,
+.dashboard-stat.blue-hoki .visual>i,
+.dashboard-stat.blue-hoki .details .number,
+.dashboard-stat.purple .details .desc,
+.dashboard-stat.purple .visual>i,
+.dashboard-stat.purple .details .number,
+.dashboard-stat.purple-studio .details .desc,
+.dashboard-stat.purple-studio .visual>i,
+.dashboard-stat.purple-studio .details .number,
+.dashboard-stat.yellow-haze .details .desc,
+.dashboard-stat.yellow-haze .visual>i,
+.dashboard-stat.yellow-haze .details .number,
+.dashboard-stat.yellow-casablanca .details .desc,
+.dashboard-stat.yellow-casablanca .visual>i,
+.dashboard-stat.yellow-casablanca .details .number,
+.dashboard-stat.yellow-crusta .details .desc,
+.dashboard-stat.yellow-crusta .visual>i,
+.dashboard-stat.yellow-crusta .details .number,
+.dashboard-stat.green-haze .details .desc,
+.dashboard-stat.green-haze .visual>i,
+.dashboard-stat.green-haze .details .number,
+.dashboard-stat.red-soft .details .desc,
+.dashboard-stat.red-soft .visual>i,
+.dashboard-stat.red-soft .details .number,
+.dashboard-stat.grey-cascade .details .desc,
+.dashboard-stat.grey-cascade .visual>i,
+.dashboard-stat.red .details .desc,
+.dashboard-stat.red .visual>i,
+.dashboard-stat.red .details .number,
+.dashboard-stat.red-flamingo .details .desc,
+.dashboard-stat.red-flamingo .visual>i,
+.dashboard-stat.red-flamingo .details .number,
+.dashboard-stat.yellow .details .desc,
+.dashboard-stat.yellow .visual>i,
+.dashboard-stat.yellow .details .number,
+.dashboard-stat.green .details .desc,
+.dashboard-stat.green .visual>i,
+.dashboard-stat.green .details .number,
+.dashboard-stat.green-meadow .details .desc,
+.dashboard-stat.green-meadow .visual>i,
+.dashboard-stat.green-meadow .details .number{
+    color: #666;
+    font-weight: 400;
+}
+
+.bg-grey-steel{
+    background-color: #ffffff!important;
+}
+
+.modal-header.bg-green-jungle,
+.modal .bg-blue,
+.modal .bg-red,
+.modal-header{
+    background: #323C46!important;
+    color: #ffffff!important;
+}
+
+thead tr,
+#total-report-table.table-highlighted th,
+#win-loss-agent-data-table tr:hover th,
+#win-loss-player-data-table tr:hover th,
+#win-loss-per-day-data-table tr:hover th,
+#win-loss-player-data-table th.th-align-center.text-right.sorting,
+#table-win-loss-provider th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.dt-body-right.sorting,
+#win-loss-per-day-data-table th.th-align-center.text-right.sorting{
+    background-color: #f5f5f5!important;
+    color: #4e4e4e!important;
+    border-bottom: 1px solid #4e4e4e;
+}
+
+th{
+    border-bottom: 1px solid #8e8e8e!important;
+}
+
+#table-win-loss-sportsbettype tr.dtrg-group td.text-white{
+    background-color: #dedede!important;
+    color: #484848!important;
+}
+
+.pagination .active a {
+    background: #dedede;
+    border-color: #dedede;
+    color: #484848;
+}
+
+.pagination a{
+    color: #484848;
+}
+
+table.dataTable tr.dtrg-group td {
+    background-color: #f9edd0;
+}
+
+#table-win-loss-sportsbettype tbody tr:last-child,
+#win-loss-agent-data-table tbody tr:last-child,
+#win-loss-agent-data-table tr:last-child td.dt-body-left.sorting_1,
+#win-loss-agent-data-table tr:last-child td.sorting_1.lay-odds,
+#win-loss-player-data-table tr:last-child,
+#win-loss-player-data-table tr:last-child td.sorting_1,
+#table-win-loss-provider tr:last-child,
+#table-win-loss-provider tr:last-child td.sorting_1,
+#win-loss-agent-data-table tr:last-child td.sorting_1,
+#win-loss-per-bet-data-table tr:last-child,
+#win-loss-per-bet-data-table tr:last-child td.sorting_1,
+#win-loss-per-day-data-table tr:last-child,
+#win-loss-per-day-data-table tr:last-child td.sorting_1,
+#total-report-table tr:last-child td {
+    background: #f7d588!important;
+    color: #484848;
+}
+
+#total-report-table tr:last-child td.dataTables_empty{
+    font-weight: 400;
+    color: #6d6d6d;
+}
+
+.btn.btn-outline.blue-madison{
+    border-color: #887942;
+    color: #887942;
+}
+
+#quick-manage-balance .btn.btn-primary.btn-block,
+#quick-manage-balance .btn.btn-outline-primary.active,
+#quick-manage-balance .btn.btn-outline-primary.btn-block,
+#quick-manage-balance .btn.btn-outline-primary{
+    background: #E7505A;
+    border-color: #E7505A;
+    color: #FFFFFF;
+}
+
+#quick-manage-balance .btn-group-toggle .btn.btn-outline-primary.btn-block,
+#quick-manage-balance .btn-group-toggle .btn.btn-outline-primary{
+    border-color: #c5c5c5;
+    background: #c5c5c5;
+    color: #ffffff;
+}
+
+#quick-manage-balance .btn.btn-outline-primary.active:hover,
+#quick-manage-balance .btn.btn-outline-primary:hover,
+#quick-manage-balance .btn.btn-outline-primary.active,
+#quick-manage-balance .btn.btn-outline-primary.btn-block:hover{
+    background: #C83D46;
+    border-color: #C83D46;
+}
+
+#quick-manage-balance .btn.btn-primary.btn-block{
+    background: #26C281;
+    border-color: #26C281;
+    color: #FFFFFF;
+}
+
+#quick-manage-balance .btn.btn-primary.btn-block:hover{
+    background: #18AA6D;
+    border-color: #18AA6D;
+}
+
+.btn.btn-outline.blue-madison.active,
+.btn.btn-outline.blue-madison:active,
+.btn.btn-outline.blue-madison:active:focus,
+.btn.btn-outline.blue-madison:active:hover,
+.btn.btn-outline.blue-madison:focus,
+.btn.btn-outline.blue-madison:hover{
+    background: #887942;
+    border-color: #887942;
+    color: #FFFFFF;
+}
+
+.btn.grey-gallery:not(.btn-outline),
+.btn.grey-gallery:not(.btn-outline):focus{
+    background-color: #dedede;
+    border-color: #dedede;
+    color: #969696;
+}
+
+#refreshBtn,
+#export-btnResponsive{
+    background: transparent!important;
+    border-color: #887942!important;
+    color: #887942!important;
+}
+
+#refreshBtn:hover,
+#export-btnResponsive:hover{
+    background: #887942!important;
+    color: #FFFFFF!important;
+}
+
+.dropdown-item a:hover {
+    text-decoration: underline;
+}
+
+.portlet.light.bordered {
+    box-shadow: rgba(0,0,0,0) 0 0 0 0;
+}
+
+.table-scrollable {
+    border-color: transparent;
+}
+
+.sidebar-layout a{
+    color: #887942;
+}
+
+.sidebar-layout ul li a:hover{
+    background: #f3efe5;
+    color: #887942;
+}
+
+/* Login */
+.login .page-wrapper,
+.login .page-content{
+    background: transparent;
+}
+
+.login .content{
+    border: 1px solid #efe3c9;
+}
+
+.login .content h3 {
+    color: #d4af5b!important;
+}
+
+.login .content .form-control{
+    background: transparent!important;
+    /* border: 1px solid #efe3c9!important; */
+}
+
+.login button[type="submit"],
+.login button[type="submit"]:active{
+    background-image: linear-gradient(to right, #fff6c7 00%, #F4CF7B 30%, #F4CF7B 60%, #FBE88A 100%)!important;
+    border-color: transparent!important;
+    color: #484848!important;
+}
+
+.modal-dialog{
+    box-shadow: 0px 5px 5px #7f7f7f;
+}
+
+.badge-primary {
+    background-color: #6838dc;
+}
+
+.main-navbar-top .dropdown-submenu>.dropdown-menu{
+    background: #FFFFFF;
+}
+
+#win-loss-agent-data-table tr:first-child th[colspan="1"][rowspan="1"],
+#win-loss-player-data-table tr:first-child th[colspan="1"][rowspan="1"],
+#win-loss-per-day-data-table tr:first-child th[colspan="1"][rowspan="1"],
+#table-win-loss-provider tr:first-child th[colspan="1"][rowspan="1"],
+#win-loss-per-bet-data-table tr:first-child th[colspan="1"][rowspan="1"]{
+    border-bottom: 1px solid transparent!important;
+}
+
+.calendar-table .table-condensed thead tr{
+    background-color: #f1f4f7!important;
+}
+
+.calendar-table .table-condensed thead th{
+    border-bottom-color: transparent!important;
+}
+
+.dropdown-menu-agentlist a:hover {
+    background: #f2f2f2;
+}
+
+#quick-manage-balance .btn.btn-outline-primary.active,
+#frmTransfer input[type="checkbox"]:checked+label{
+    background: linear-gradient(to right, #fff6c7 00%, #F4CF7B 40%, #F4CF7B 100%)!important;
+}
+
+#quick-manage-balance .btn.btn-outline-primary.active .text-center,
+#frmTransfer input[type="checkbox"]:checked+label .text-center{
+    color: #3e3e3e;
+}
+
+button.close{
+    filter: invert(1);
+    opacity: 1;
+}
+
+.portlet .profile-section {
+    border-top: 1px solid #efe3c9;
+}
+
+.sidebar-layout ul li a:hover,
+.sidebar-layout ul li:hover {
+    background: #f3efe5;
+}
+
+.dashboard-stat .desc p{
+    color: #887942;
+}
+
+.dashboard-stat p.small{
+    color: #6b6b6b;
+    opacity: 1;
+}

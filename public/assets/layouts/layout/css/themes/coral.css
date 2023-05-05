@@ -1,0 +1,429 @@
+body.login {
+    background-color: #f1433f!important;
+}
+
+.login .content {
+    border-radius: 5px!important;
+}
+
+.login .note.note-danger{
+    background: #ff1a2c;
+    border-color: #c50312;
+    color: white;
+}
+
+body.login .page-content{
+    background: transparent;
+}
+
+.login h3 {
+    color: #f1433f!important;
+}
+
+.login .btn.green{
+    background: #ff7a46!important;
+    border-color: transparent!important;
+    color: white;
+    border-radius: 25px!important;
+    transition: .3s all;
+}
+
+.login .btn.green:active,
+.login .btn.green:hover,
+.login .btn.green:focus{
+    background: #fc4e4a!important;
+    border-color: transparent;
+    color:white;
+}
+
+.login .content .form-control{
+    color: black;
+}
+
+.badge-primary {
+    background-color: #ffe000;
+    color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .nav-link i{
+    color: #ffc7c6;
+}
+
+.main-navbar-top.bg-dark {
+    background: #f1433f!important;
+    border-bottom: 2px solid transparent!important;
+}
+
+.main-navbar-top .dropdown-menu,
+.main-navbar-top .dropdown-submenu>.dropdown-menu{
+    background: #ff7a46;
+    border: 1px solid #ff7a46;
+}
+.main-navbar-top .navbar .dropdown-toggle,
+.navbar .dropdown-menu a,
+.navbar .dropdown-menu a i{
+    color: #ffe2d6;
+}
+
+.main-navbar-top .nav-toggle:hover,
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:hover i,
+.main-navbar-top .nav-toggle:hover,
+.main-navbar-top .nav-item.active a,
+.main-navbar-top .nav-item.active a span,
+.main-navbar-top .nav-item.active a i{
+    color: #fffbf9!important;
+}
+
+
+.main-navbar-top .dropdown-item a:hover,
+.main-navbar-top .dropdown-item a:hover i{
+    color: #ffffff!important;
+}
+
+.dashboard-stat.default,
+.dashboard-stat.blue,
+.dashboard-stat.blue-soft,
+.dashboard-stat.blue-chambray,
+.dashboard-stat.blue-hoki,
+.dashboard-stat.purple,
+.dashboard-stat.purple-studio,
+.dashboard-stat.yellow-haze,
+.dashboard-stat.yellow-casablanca,
+.dashboard-stat.yellow-crusta,
+.dashboard-stat.green-haze,
+.dashboard-stat.red-soft,
+.dashboard-stat.grey-cascade,
+.dashboard-stat.red,
+.dashboard-stat.red-flamingo,
+.dashboard-stat.yellow,
+.dashboard-stat.green,
+.dashboard-stat.green-meadow{
+    background-color: #ececec;
+}
+
+.dashboard-stat.default:hover,
+.dashboard-stat.blue:hover,
+.dashboard-stat.blue-soft:hover,
+.dashboard-stat.blue-chambray:hover,
+.dashboard-stat.blue-hoki:hover,
+.dashboard-stat.purple:hover,
+.dashboard-stat.purple-studio:hover,
+.dashboard-stat.yellow-haze:hover,
+.dashboard-stat.yellow-casablanca:hover,
+.dashboard-stat.yellow-crusta:hover,
+.dashboard-stat.green-haze:hover,
+.dashboard-stat.red-soft:hover,
+.dashboard-stat.grey-cascade:hover,
+.dashboard-stat.red:hover,
+.dashboard-stat.red-flamingo:hover,
+.dashboard-stat.yellow:hover,
+.dashboard-stat.green:hover,
+.dashboard-stat.green-meadow:hover{
+    background-color: #e2dfdf;
+}
+
+.dashboard-stat.blue .details .desc,
+.dashboard-stat.blue .visual>i,
+.dashboard-stat.blue .details .number,
+.dashboard-stat.blue-soft .details .desc,
+.dashboard-stat.blue-soft .visual>i,
+.dashboard-stat.blue-soft .details .number,
+.dashboard-stat.blue-chambray .details .desc,
+.dashboard-stat.blue-chambray .visual>i,
+.dashboard-stat.blue-chambray .details .number,
+.dashboard-stat.blue-hoki .details .desc,
+.dashboard-stat.blue-hoki .visual>i,
+.dashboard-stat.blue-hoki .details .number,
+.dashboard-stat.purple .details .desc,
+.dashboard-stat.purple .visual>i,
+.dashboard-stat.purple .details .number,
+.dashboard-stat.purple-studio .details .desc,
+.dashboard-stat.purple-studio .visual>i,
+.dashboard-stat.purple-studio .details .number,
+.dashboard-stat.yellow-haze .details .desc,
+.dashboard-stat.yellow-haze .visual>i,
+.dashboard-stat.yellow-haze .details .number,
+.dashboard-stat.yellow-casablanca .details .desc,
+.dashboard-stat.yellow-casablanca .visual>i,
+.dashboard-stat.yellow-casablanca .details .number,
+.dashboard-stat.yellow-crusta .details .desc,
+.dashboard-stat.yellow-crusta .visual>i,
+.dashboard-stat.yellow-crusta .details .number,
+.dashboard-stat.green-haze .details .desc,
+.dashboard-stat.green-haze .visual>i,
+.dashboard-stat.green-haze .details .number,
+.dashboard-stat.red-soft .details .desc,
+.dashboard-stat.red-soft .visual>i,
+.dashboard-stat.red-soft .details .number,
+.dashboard-stat.grey-cascade .details .desc,
+.dashboard-stat.grey-cascade .visual>i,
+.dashboard-stat.red .details .desc,
+.dashboard-stat.red .visual>i,
+.dashboard-stat.red .details .number,
+.dashboard-stat.red-flamingo .details .desc,
+.dashboard-stat.red-flamingo .visual>i,
+.dashboard-stat.red-flamingo .details .number,
+.dashboard-stat.yellow .details .desc,
+.dashboard-stat.yellow .visual>i,
+.dashboard-stat.yellow .details .number,
+.dashboard-stat.green .details .desc,
+.dashboard-stat.green .visual>i,
+.dashboard-stat.green .details .number,
+.dashboard-stat.green-meadow .details .desc,
+.dashboard-stat.green-meadow .visual>i,
+.dashboard-stat.green-meadow .details .number{
+    color: #353535;
+    font-weight: 400;
+}
+
+.modal-header.bg-green-jungle,
+.modal .bg-blue,
+.modal .bg-red,
+.modal-header{
+    background: #ff7a46!important;
+}
+
+#quick-manage-balance label.btn.btn-outline-primary.active{
+    background: #f1433f!important;
+    border-color: transparent!important;
+    color: white!important;
+}
+
+#quick-manage-balance label.btn.btn-outline-primary.active i{
+    color: white!important;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: #ffffff82;
+}
+
+.btn.grey-gallery {
+    background: #505050;
+    border-color: #505050;
+}
+
+.page-content,
+.page-content-white .page-bar{
+    background-color: #f9f9f9;
+}
+
+.thAction .btn.btn-outline.blue-madison,
+.btn.blue-madison.btn-outline,
+#refreshBtn.btn{
+    border: 1px solid #ff7a46;
+    color: #ff7a46;
+    background-color: transparent;
+}
+
+#refreshBtn.btn:hover,
+#refreshBtn.btn:focus,
+.btn.blue,
+.thAction .btn.btn-outline.blue-madison:hover,
+.thAction .btn.btn-outline.blue-madison:focus,
+.blue-madison.btn-outline:hover,
+.btn.blue-madison.btn-outline:focus,
+a.btn.btn-primary.btn-sm{
+    border: 1px solid #ff7a46!important;
+    background: #ff7a46!important;
+    color: #ffffff!important;
+}
+
+.btn.blue:hover,
+.btn.blue:focus,
+a.btn.btn-primary.btn-sm:focus,
+a.btn.btn-primary.btn-sm:hover{
+    border: 1px solid #f1433f!important;
+    background: #f1433f!important;
+    color: white;
+}
+
+.pagination .active a{
+    border-color: #f1433f;
+    background: #f1433f;
+}
+
+.pagination .disabled a{
+    background: #fbfbfb;
+}
+
+.pagination li a:hover {
+    background-color: #ff7a46;
+    color: white;
+    border-color: #ff7a46;
+    text-decoration: none;
+}
+
+.dropdown-menu-agentlist a:hover,
+.refresh-checkbox{
+    background: #f9f9f9;
+}
+
+.filters.bg-grey-steel {
+    background: #ffffff!important;
+}
+
+a#export-btnResponsive,
+.filters .btn.btn-success{
+    background: transparent;
+    border-color: #f1433f;
+    color: #f1433f;
+}
+
+a#export-btnResponsive:hover,
+a#export-btnResponsive:focus,
+.filters .btn.btn-success:hover,
+.filters .btn.btn-success:focus{
+    background: #f1433f;
+    border-color: #f1433f;
+    color: white;
+}
+
+#table-win-loss-sportsbettype tr.dtrg-group td.text-white{
+    background: #c7c7c7!important;
+    color: black!important;
+}
+
+#table-win-loss-sportsbettype tbody tr:last-child,
+#win-loss-agent-data-table tbody tr:last-child,
+#win-loss-agent-data-table tr:last-child td.dt-body-left.sorting_1,
+#win-loss-agent-data-table tr:last-child td.sorting_1.lay-odds,
+#win-loss-player-data-table tr:last-child,
+#win-loss-player-data-table tr:last-child td.sorting_1,
+#table-win-loss-provider tr:last-child,
+#table-win-loss-provider tr:last-child td.sorting_1,
+#win-loss-agent-data-table tr:last-child td.sorting_1,
+#win-loss-per-bet-data-table tr:last-child,
+#win-loss-per-bet-data-table tr:last-child td.sorting_1,
+#win-loss-per-day-data-table tr:last-child,
+#win-loss-per-day-data-table tr:last-child td.sorting_1,
+#total-report-table tr:last-child td{
+    background: #f7d588!important;
+    color: #484848;
+}
+
+thead tr,
+#casino-report-table th,
+#agent-action-history th,
+#rebateTable th,
+#total-report-table.table-highlighted th,
+#win-loss-agent-data-table tr:hover th,
+#win-loss-player-data-table tr:hover th,
+#win-loss-per-day-data-table tr:hover th,
+#win-loss-player-data-table th.th-align-center.text-right.sorting,
+#table-win-loss-provider th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.dt-body-right.sorting,
+#win-loss-per-day-data-table th.th-align-center.text-right.sorting{
+    background-color: #f5f5f5!important;
+    color: #4e4e4e!important;
+}
+
+thead tr,
+#casino-report-table th,
+#agent-action-history th,
+#rebateTable th,
+#total-report-table.table-highlighted th,
+#win-loss-agent-data-table tr th,
+#win-loss-player-data-table tr th,
+#win-loss-per-day-data-table tr th,
+#win-loss-player-data-table th.th-align-center.text-right.sorting,
+#table-win-loss-provider th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.text-right.sorting,
+#win-loss-per-bet-data-table th.th-align-center.dt-body-right.sorting,
+#win-loss-per-day-data-table th.th-align-center.text-right.sorting,
+#table-win-loss-provider th,
+#win-loss-agent-data-table tr:first-child th[rowspan="2"],
+#win-loss-player-data-table tr:first-child th[rowspan="2"],
+#win-loss-per-day-data-table tr:first-child th[rowspan="2"],
+#win-loss-player-data-table tr:first-child th[rowspan="2"],
+#table-win-loss-provider tr:first-child th[rowspan="2"],
+#win-loss-per-bet-data-table tr:first-child th[rowspan="2"],
+#win-loss-per-day-data-table tr:first-child th[rowspan="2"]{
+    border-bottom: 1px solid #4e4e4e;
+}
+
+.sidebar-layout ul li a,
+.profile-section a,
+#registrion-url a{
+    color: #f1433f;
+}
+
+.sidebar-layout ul li a:hover,
+.sidebar-layout ul li a:focus,
+#registrion-url a:hover,
+#registrion-url a:focus{
+    color: #ff7a46;
+    background: transparent;
+}
+
+.portlet>.portlet-title,
+.portlet-action .dl-horizontal,
+.profile-section,
+.page-content-white .page-content .page-bar{
+    border-bottom: 1px solid #f5e7e7!important;
+}
+
+.list-group-item,
+.portlet.light.bordered{
+    border: 1px solid #f5e7e7!important;
+}
+
+hr{
+    border-top: 1px solid #cce8cd!important;
+}
+
+nav hr{
+    border-top: 1px solid #ff9c76!important;
+}
+
+.portlet.light {
+    background: #ffffff;
+    border: 1px solid #f5e7e7;
+}
+
+.modal-title{
+    color: white;
+}
+
+#divBonus .form-group:nth-child(5) .btn{
+    background: transparent!important;
+    border: 1px solid #f1433f!important;
+    color: #f1433f!important;
+}
+
+#divBonus .form-group:nth-child(5) .btn:hover,
+#divBonus .form-group:nth-child(5) .btn:focus,
+#divBonus .form-group:nth-child(6) .btn{
+    background: #f1433f!important;
+    border: 1px solid #f1433f!important;
+    color: white!important;
+}
+
+#divBonus .form-group:nth-child(6) .btn:hover,
+#divBonus .form-group:nth-child(6) .btn:focus{
+    background: #f1433f!important;
+    border: 1px solid #f1433f!important;
+}
+
+#win-loss-agent-data-table tr:first-child th,
+#win-loss-player-data-table tr:first-child th,
+#win-loss-per-day-data-table tr:first-child th,
+#win-loss-player-data-table tr:first-child th,
+#table-win-loss-provider tr:first-child th,
+#win-loss-per-bet-data-table tr:first-child th,
+#win-loss-per-day-data-table tr:first-child th{
+    border-bottom: none;
+}
+
+@media screen and (min-width: 1200px){
+    hr{
+        border-top: 1px solid #cce8cd!important;
+    }
+}
+
+.dashboard-stat p.small{
+    color: #6b6b6b;
+    opacity: 1;
+}
