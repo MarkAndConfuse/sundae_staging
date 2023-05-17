@@ -60,22 +60,41 @@ class LoginController extends Controller
             $user = Socialite::driver('google')->user();
             
             if ($user->email == 'mescario@ics.com.ph'){
-                $accounts = CDBAccounts::where('Email', strtoupper($user->email))->first();
-                session()->put('GoogleId', $user->id);
+                
+                $_email = $user->email;
+                // $_email = 'asy-lu@ics.com.ph';
+                // $_email = 'msoriano@ics.com.ph';
+                
+                $accounts = CDBAccounts::where('Email', strtoupper($_email))->first();
+
+                session()->put('AccountName', $accounts->AccountName);
+                session()->put('NickName', $accounts->NickName);
+
+                $spName = explode(' ', $accounts->AccountName, 3);
+                $first_name = $spName[0] .' '. $spName[1];
+                
+                session()->put('AccountID', $accounts->AccountID);
+                session()->put('AccountGroup', $accounts->AccountGroup);
                 session()->put('GoogleName', $user->name);
-                session()->put('GoogleEmail', $user->email);
+                session()->put('GoogleEmail', $_email);
+                session()->put('FirstName', $first_name);
                 session()->put('gAvatar', $accounts->GAvatar);
+
                 return redirect('/dashboard');
             } 
 
             $accounts = CDBAccounts::where('Email', $user->email)->first();
+
+            session()->put('AccountID', $accounts->AccountID);
+            session()->put('AccountGroup', $accounts->AccountGroup);
+            session()->put('AccountName', $accounts->AccountName);
+            session()->put('NickName', $accounts->NickName);
             session()->put('GoogleId', $user->id);
             session()->put('GoogleName', $user->name);
             session()->put('GoogleEmail', $user->email);
             session()->put('gAvatar', $accounts->GAvatar);
             return redirect('/dashboard');
             
-    
         } catch (Exception $e) {
             \Log::info('error: '. $e->getMessage());
         }

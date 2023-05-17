@@ -85,6 +85,15 @@ class ManageSubscriptionController extends Controller
         }
     }
 
+    public function viewLinkSubscription(Request $request)
+    {
+        try {
+            return $this->manageSubscription->viewLinkSubscription($request);
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
     public function viewAndUpdateSubscription(Request $request)
     {
         try {
@@ -107,6 +116,33 @@ class ManageSubscriptionController extends Controller
     {
         try {
             return $this->manageSubscription->updateSubscription($request);
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function getBrands(Request $request)
+    {
+        try {
+            return $this->manageSubscription->getBrands($request);
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function getSubContacts(Request $request)
+    {
+        try {
+            return $this->manageSubscription->getSubContacts($request);
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function getSingleContact(Request $request)
+    {
+        try {
+            return $this->manageSubscription->getSingleContact($request);
         } catch (Exception $e){
             return $e->getMessage();
         }

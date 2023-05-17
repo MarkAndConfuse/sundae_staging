@@ -97,6 +97,7 @@
                         <option value="BU2">BU2</option>
                         <option value="BU5">BU5</option>
                         <option value="BU8">BU8</option>
+                        <option value="BU6">BU6</option>
                         <option value="BU10">BU10</option>
                         <option value="BU12">BU12</option>
                         <option value="CE01">CE01</option>

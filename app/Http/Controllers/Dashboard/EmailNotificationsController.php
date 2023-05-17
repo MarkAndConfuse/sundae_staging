@@ -47,6 +47,15 @@ class EmailNotificationsController extends Controller
         }
     }
 
+    public function addSingleEmailNotif(Request $request)
+    {
+        try {
+            return $this->emailNotifs->addSingleEmailNotif($request);
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
     public function editEmailNotif(Request $request)
     {
         try {

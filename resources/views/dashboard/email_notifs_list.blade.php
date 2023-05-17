@@ -18,7 +18,7 @@
                         data-notif-id="{{ $eN->id }}" 
                         data-notif-subject="{{ $eN->subject }}" 
                         data-notif-message="{{ $eN->message }}" 
-                        type="button" onclick="editEmailNotif(this)"><i class="fa fa-edit"></i> Edit</button>
+                        type="button" onclick="editEmailNotif(this, {{ $eN->id }})"><i class="fa fa-edit"></i> Edit</button>
                         @if(session()->get('GoogleName') == 'Mark Edo Escario')
                         <button class="btn btn-danger btn-xs" data-notif-id="{{ $eN->id }}" type="button" onclick="deleteEmailNotif(this)"><i class="fa fa-trash"></i> Delete</button>
                         @endif

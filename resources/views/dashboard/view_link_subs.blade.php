@@ -5,7 +5,7 @@
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
       				<a href="/dashboard" class="brand-link">
-        				<img src="images/sundae.jpg" class="img-circle elevation-2" style="width:35px; height:35px; border-radius:50%" alt="Sundae">
+        				<img src="../images/sundae.jpg" class="img-circle elevation-2" style="width:35px; height:35px; border-radius:50%" alt="Sundae">
         			<!-- <span class="brand-text font-weight-light">ICS</span> -->
         		<span style="color: #E83E8C; font-size: 20px; margin-left: 8px;"><b>SUNDAE</b></span>
     		</a>
@@ -15,7 +15,7 @@
     <div class="sidebar" style="margin-top: -38px;">
         <!-- Sidebar user panel (optional) -->
         	<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-				@if(session()->get('NickName'))
+				@if(session()->get('GoogleName'))
             	<div class="image">
 				<img src="{{ session()->get('gAvatar') }}" class="img-circle elevation-2" alt="User Image">
             		<!-- <img src="/admin_lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
@@ -59,24 +59,24 @@
                 		</a>
             		</li>
 					@endif
-        		<!-- </ul> -->
-        	</li>
-          	<li class="nav-item">
-				@if(session()->get('GoogleName'))
-			  	<a class="dropdown-item" href="{{ route('logout') }}"
-                	onclick="event.preventDefault();
-                	document.getElementById('logout-form').submit();">
-					<i class="fa fa-arrow-left nav-icon"></i>
-                	{{ __('Logout') }}
-                </a>
-				@else
-				<a style="cursor: pointer;" href="https://sundae.ics.com.ph" class="nav-link">
-					<i class="fa fa-arrow-right nav-icon"></i>
-                  			<p>Login</p>
-                		</a>
-				@endif
+        		    <!-- </ul> -->
+        	    </li>
+          	    <li class="nav-item">
+					@if(session()->get('GoogleName'))
+						<a class="dropdown-item" href="{{ route('logout') }}"
+						onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						<i class="fa fa-arrow-left nav-icon"></i>
+						{{ __('Logout') }}
+					</a>
+					@else
+					<a style="cursor: pointer;" href="https://sundae.ics.com.ph" class="nav-link">
+						<i class="fa fa-arrow-right nav-icon"></i>
+								<p>Login</p>
+							</a>
+					@endif
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-						@csrf
+					@csrf
 					</form>
           		</li>
         	</ul>
@@ -85,7 +85,7 @@
 </div>
 <!-- /.sidebar -->
 </aside>
-@include('dashboard.main')
+@include('dashboard.view_subscription')
 @include('dashboard.footer')
 
 

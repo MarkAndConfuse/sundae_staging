@@ -31,6 +31,25 @@ class EmailNotifs extends Model
         } 
     }
 
+    public static function saveAddSingleEmailNotif($request)
+    {
+        DB::beginTransaction();
+        try {
+        $addSingleEmailNotif = self::create([
+            'sub_id' => $request->subIdVal,
+            'subject' => $request->subjectVal,
+            'message' => $request->messageVal,
+            'when_to_send' => $request->whenToSendVal,
+            'date_sent' => '1990'
+        ]);
+            DB::commit();
+            return $addSingleEmailNotif; 
+        } catch (Exception $e){
+            DB::rollback();
+            return $e->getMessage();
+        } 
+    }
+
     public static function saveUpdatedEmailNotif($request)
     {
         $emailNotifs = self::where('id', $request->nId)->first();

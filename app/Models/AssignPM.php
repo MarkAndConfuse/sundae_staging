@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Subscriptions;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use DB;
 
 class AssignPM extends Model
@@ -70,23 +71,28 @@ class AssignPM extends Model
         DB::beginTransaction();
         try {
         $editPm = self::where('sub_id', $request->subsId)->get();
-        $uArr = explode(",", $request->pmPayload);
+        $uArrP = explode(",", $request->pmPayload);
         // $l = self::where('sub_id', $request->subsId)->delete();
-
+        \Log::info($uArrP);
+        if(!empty($uArrP)) {
         if(!empty($editPm)){
-            foreach ($uArr as $key => $value){
+            foreach ($uArrP as $key => $value){
                 $aId = preg_replace('/[^0-9]+/', '', $value);
                 $a = self::where('account_id', $aId)->where('sub_id', $request->subsId)->first();
                 if (empty($a)){
+                    \Log::info('str'. (preg_replace('/[0-9]+/', '', $value)));
+                   
                     $a = self::create([
                         'sub_id' => $request->subsId,
                         'pm_name' => preg_replace('/[0-9]+/', '', $value),
                         'account_id' => $int_var = preg_replace('/[^0-9]/', '', $value)  
-                    ]);
-
+                        ]);
+                    
+                    }
                 }
             }
         }
+        
 
         DB::commit();
         } catch (Exception $e){

@@ -47,9 +47,11 @@ class EmailNotificationsService
             // $emailNotifs = EmailNotifs::where('sub_id', $request->nId)->get(); 
             $emailNotifs = DB::table('email_notifications as em')
                         ->join('email_recipients as er', 'er.sub_id', '=', 'em.sub_id')
+                        ->select('em.*', 'er.email', 'er.rec_type')
                         ->where('rec_type', 'to')
                         ->where('em.sub_id', $request->nId)
                         ->get();
+           
             return view('dashboard.email_notifs_list', [
                 'dateTime' => $dTime,
                 'emailNotifs' => $emailNotifs
@@ -62,7 +64,17 @@ class EmailNotificationsService
     public function addEmailNotif($request)
     {
         try {
-            $addEmailNotif =  EmailNotifs::saveAddEmailNotif($request);
+            $addEmailNotif = EmailNotifs::saveAddEmailNotif($request);
+            return $addEmailNotif;
+        } catch (Exception $e){
+            return $e->getMessage(); 
+        }
+    }
+
+    public function addSingleEmailNotif($request)
+    {
+        try {
+            $addSingleEmailNotif = EmailNotifs::saveAddSingleEmailNotif($request);
             return $addEmailNotif;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -72,7 +84,7 @@ class EmailNotificationsService
     public function editEmailNotif($request)
     {
         try {
-            $editEmailNotifs =  EmailNotifs::where('id', $request->nId)->first();
+            $editEmailNotifs = EmailNotifs::where('id', $request->nId)->first();
             return view('dashboard.edit_email_notif', [
                 'editEmailNotifs' => $editEmailNotifs
             ]);
@@ -84,7 +96,7 @@ class EmailNotificationsService
     public function saveUpdatedEmailNotif($request)
     {
         try {
-            $updateEmailNotif =  EmailNotifs::saveUpdatedEmailNotif($request);
+            $updateEmailNotif = EmailNotifs::saveUpdatedEmailNotif($request);
             return $updateEmailNotif;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -94,7 +106,7 @@ class EmailNotificationsService
     public function deleteEmailNotif(Request $request)
     {
         try {
-            $deleteEmailNotif =  EmailNotifs::saveDeletedEmailNotif($request);
+            $deleteEmailNotif = EmailNotifs::saveDeletedEmailNotif($request);
             return $deleteEmailNotif;
         } catch (Exception $e){
             return $e->getMessage(); 

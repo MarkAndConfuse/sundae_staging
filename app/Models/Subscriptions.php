@@ -169,7 +169,9 @@ class Subscriptions extends Model
             $updateSubscription->customer_name = $request->uCustomerNameVal;
             $updateSubscription->customer_number = $request->uCustomerNoVal;
             $updateSubscription->customer_id = $request->uCustomerIdVal;
-            // $updateSubscription->contact_id = $request->uContactIdVal;
+            if (!empty($request->uContactIdVal)){
+                $updateSubscription->contact_id = $request->uContactIdVal;
+            } 
             $updateSubscription->updated_by = $request->uUpdatedByVal;
             $updateSubscription->save();
             DB::commit();

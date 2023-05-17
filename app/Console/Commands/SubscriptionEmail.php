@@ -57,48 +57,87 @@ class SubscriptionEmail extends Command
                         ->join('email_notifications as e', 'e.sub_id', '=', 's.id')
                         ->select('s.*', 'e.when_to_send', 'e.subject', 'e.message')
                         ->get();
-        foreach($recs as $sub){
 
+        foreach($recs as $sub){
             $date_sent = Carbon::parse($sub->activation_date)
                         ->addYears($sub->terms)->subDays($sub->when_to_send);
 
             $actDate = Carbon::parse($sub->activation_date)
-                    ->addYears($sub->terms)->subDays($sub->when_to_send);      
+                        ->addYears($sub->terms)->subDays($sub->when_to_send);      
             
             $maxDate = Carbon::parse($sub->activation_date)->addYears($sub->terms);
             $days = $maxDate->diffInDays($date_sent);
 
             $ao = CDBAccounts::where('AccountID', $sub->ao_id)->first();
             $ao_recipient = EmailRecipients::where('sub_id', $sub->id)->first();
-
-            $aPm = AssignPM::where('sub_id', $sub->id)->first();
-            \Log::info($aPm->pm_name);
-            $pm_email = CDBAccounts::where('AccountID', $aPm->account_id)->first();
             
+            $aPm = AssignPM::where('sub_id', $sub->id)->first();
+            if (empty($aPm)){
+                $pm_email = '';
+            } else {
+                $pm_email = CDBAccounts::where('AccountID', $aPm->account_id)->first();
+            }
+
             if ($sub->contact_id == null){
                 $conId = 199220;
             } else {
                 $conId = $sub->contact_id;
             }
-            \Log::info('contact: '. $conId);
-
+            
             $contacts = AllContacts::where('ContactID', $conId)->first();
 
-            \Log::info('contact: '. $contacts->ContactName);
-
             $aTcd = AssignTCD::where('sub_id', $sub->id)->first();
-            $tcd_email = CDBAccounts::where('AccountID', $aTcd->account_id)->first();
+            if (empty($aTcd)){
+                $tcd_email = '';
+            } else {
+                $tcd_email = CDBAccounts::where('AccountID', $aTcd->account_id)->first();
+            }
 
-            // $aCsd = AssignCSD::where('sub_id', $sub->id)->first();
-            // $csd_email = CDBAccounts::where('AccountName', $aCsd->csd_name)->first();
+            $aCsd = AssignCSD::where('sub_id', $sub->id)->first();
+            if (empty($aCsd)){
+                $csd_email = '';
+            } else {
+                $csd_email = CDBAccounts::where('AccountID', $aCsd->account_id)->first();
+            }
 
             $aoEmail = $ao_recipient->email;
-            $pmName = $aPm->pm_name;
-            $tcdName = $aTcd->tcd_name;
-            // $csdName = $aCsd->csd_name;
-            $pmEmail = $pm_email->Email;
-            $tcdEmail = $tcd_email->Email;
-            // $csdEmail = $csd_email->Email;
+            
+            if (empty($aPm)){
+                $pmName = 'N/A';
+            } else {
+                $pmName = $aPm->pm_name;
+            }
+            
+            if (empty($aTcd)){
+                $tcdName = 'N/A';
+            } else {
+                $tcdName = $aTcd->tcd_name;
+            }
+
+            if (empty($aCsd)){
+                $csdName = 'N/A';
+            } else {
+                $csdName = $aCsd->csd_name;
+            }
+
+            if (empty($pm_email)){
+                $pmEmail = 'mescario@ics.com.ph';
+            } else {
+                $pmEmail = $pm_email->Email;
+            }
+
+            if (empty($tcd_email)){
+                $tcdEmail = 'mescario@ics.com.ph';
+            } else {
+                $tcdEmail = $tcd_email->Email;
+            }
+
+            if (empty($csd_email)){
+                $csdEmail = 'mescario@ics.com.ph';
+            } else {
+                $csdEmail = $csd_email->Email;
+            }
+            
             $ao = $sub->assigned_ao;
             $customerName = $sub->customer_name;
             $terms = $sub->terms;
@@ -110,8 +149,8 @@ class SubscriptionEmail extends Command
             
             if($actDate == $dTime){ 
                 // Mail::to('mescario@ics.com.ph')->send(new SubscriptionNotification($ao, $customerName, $contactPerson, $product, $terms, $expirationDate, $activationDate, $pmName, $tcdName));
-                // Mail::to($aoEmail)->cc([$pmEmail, $tcdEmail, 'odelcarmen@ics.com.ph', 'dramos@ics.com.ph', 'mescario@ics.com.ph'])->send(new SubscriptionNotification($ao, $customerName, $contactPerson, $product, $terms, $expirationDate, $activationDate, $pmName));
-                Mail::to($aoEmail)->cc([$pmEmail, 'odelcarmen@ics.com.ph', 'dramos@ics.com.ph', 'mescario@ics.com.ph'])->send(new SubscriptionNotification($ao, $customerName, $contactPerson, $product, $terms, $expirationDate, $activationDate, $pmName));
+                // Mail::to($aoEmail)->cc([$pmEmail, $tcdEmail, 'odelcarmen@ics.com.ph', 'dramos@ics.com.ph', 'mescario@ics.com.ph'])->send(new SubscriptionNotification($ao, $customerName, $contactPerson, $product, $terms, $expirationDate, $activationDate, $pmName, $tcdName));
+                Mail::to($aoEmail)->cc([$pmEmail, $tcdEmail, $csdEmail, 'odelcarmen@ics.com.ph', 'dramos@ics.com.ph', 'mescario@ics.com.ph'])->send(new SubscriptionNotification($ao, $customerName, $contactPerson, $product, $terms, $expirationDate, $activationDate, $pmName, $tcdName, $csdName));
             }
         }
         

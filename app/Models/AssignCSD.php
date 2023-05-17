@@ -61,24 +61,28 @@ class AssignCSD extends Model
         DB::beginTransaction();
         try {
             $editCsd = self::where('sub_id', $request->subsId)->get();
-            $uArr = explode(",", $request->csdPayload);
+            $uArrC = explode(",", $request->csdPayload);
             // $l = self::where('sub_id', $request->subsId)->delete();
+            \Log::info($uArrC);
+            if(!empty($uArrC)){
             if(!empty($editCsd)){
-                foreach ($uArr as $key => $value){
+                foreach ($uArrC as $key => $value){
                     \Log::info(preg_replace('/[^0-9]+/', '', $value));
                     $cId = preg_replace('/[^0-9]+/', '', $value);
                     $c = self::where('account_id', $cId)->where('sub_id', $request->subsId)->first();
                     // $a = self::where('account_id', $aId)->delete();
                     if (empty($c)){    
+                        if (!empty(preg_replace('/[0-9]+/', '', $value))){
                         $c = self::create([
                             'sub_id' => $request->subsId,
                             'csd_name' => preg_replace('/[0-9]+/', '', $value),
                             'account_id' => $int_var = preg_replace('/[^0-9]/', '', $value)  
                         ]);
-    
+                        }
                     }
                 }
             }
+        }
         
         DB::commit();
         } catch (Exception $e){

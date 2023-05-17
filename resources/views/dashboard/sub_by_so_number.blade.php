@@ -1,3 +1,4 @@
+@if(session()->get('GoogleName'))
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -19,13 +20,13 @@
 <!-- /.content-header -->
 <main class="main-d">
     <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-                <div class="row">
-                <div class="container">
-                <div class="card mb-4">         
-                <div class="card-header subscription-h">
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="container">
+                        <div class="card mb-4">         
+                    <div class="card-header subscription-h">
                 <i class="fa fa-list"></i>
             FILTERED SUBSCRIPTION BY SO NUMBER
         </div>
@@ -72,7 +73,8 @@
                 <td>{{ $sub->brand }}</td>
                 <td>{{ $sub->customer_name }}</td>
                 <td style="text-align: center;">
-                    <button class="btn btn-primary btn-xs" 
+                    <a href="/subscriptions/{{ $sub->id }}" style="text-decoration: none;">
+                    <button class="btn btn-warning btn-xs" 
                     data-subs-id="{{ $sub->id }}"
                     data-so-number="{{ $sub->so_number }}" 
                     data-invoice-date="{{ $sub->invoice_date }}"
@@ -91,8 +93,8 @@
                     data-customer-id="{{ $sub->customer_id }}"
                     data-terms="{{ $sub->terms }}"
                     data-p-schedule="{{ $sub->payment_schedule }}"
-                    type="button" onclick="viewSubscription(this, {{ $sub->id }})"><i class="fa fa-eye"></i> View
-                    </button>
+                    type="button"><i class="fa fa-eye"></i> View
+                    </button></a>
                 </td>
             </tr>
             @endforeach
@@ -134,3 +136,29 @@
     }
 </style>
 @include('dashboard.js.assign_csd_js')
+@else
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                <div class="col-sm-6">
+            <!-- <h1 class="m-0 text-dark">Dashboard</h1> -->
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>    
+                <li class="breadcrumb-item active"> Today is {{ $dateTime }}</li>     
+            </ol>
+        </div>
+    </div>
+<div class="alert alert-danger">
+<div class="fa fa-spinner fa-spin"></div> 
+    Sorry, this is an invalid access. Please ask assistance from
+        Application Development Team / IT Department. Please <a href="/">Log in</a>.
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif

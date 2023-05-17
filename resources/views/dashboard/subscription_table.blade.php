@@ -1,3 +1,4 @@
+@if(session()->get('GoogleName'))
 <main class="subs">
     <div class="container-fluid">
 <div class="row charts-docs">
@@ -42,6 +43,13 @@
         </div>
     </div>
 </div>
+@else
+<div class="col-md-12 alert-margin" style="margin-top: 15px;">
+    <div class="alert alert-danger"><div class="fa fa-spinner fa-spin"></div> 
+        Sorry, this is an invalid access. Please ask assistance from
+        Application Development Team / IT Department. Please <a href=".">Log in</a>.</div></div>
+    </div>
+@endif
 <style>
     .btn-group-xs > .btn, .btn-xs {
         padding: .25rem .4rem;

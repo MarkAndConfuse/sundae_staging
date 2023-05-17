@@ -22,7 +22,7 @@
         		</div>
 				@endif
         		<div class="info">
-            <a href="#" class="d-block">{{ strtoupper(session()->get('GoogleName')) }}</a>
+            <a href="#" class="d-block">{{ strtoupper(session()->get('NickName')) }}</a>
         </div>
     </div>
     <!-- Sidebar Menu -->

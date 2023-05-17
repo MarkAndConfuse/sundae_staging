@@ -21,13 +21,14 @@ class SubscriptionNotification extends Mailable implements ShouldQueue
     public $pmName;
     public $tcdName;
     public $ao;
+    public $csdName;
     
     /**
      * Create a new message instance.
      * 
      * @return void
      */
-    public function __construct($ao, $customerName, $contactPerson, $product, $terms, $activationDate, $expirationDate, $pmName, $tcdName)
+    public function __construct($ao, $customerName, $contactPerson, $product, $terms, $activationDate, $expirationDate, $pmName, $tcdName, $csdName)
     {
         $this->ao = $ao;
         $this->customerName = $customerName;
@@ -38,6 +39,7 @@ class SubscriptionNotification extends Mailable implements ShouldQueue
         $this->expirationDate = $expirationDate;
         $this->pmName = $pmName;
         $this->tcdName = $tcdName;
+        $this->csdName = $csdName;
     }
 
     /**

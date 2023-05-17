@@ -61,22 +61,26 @@ class AssignTCD extends Model
         DB::beginTransaction();
         try {
         $editTcd = self::where('sub_id', $request->subsId)->get();
-        $uArr = explode(",", $request->tcdPayload);
+        $uArrT = explode(",", $request->tcdPayload);
     
         // $l = self::where('sub_id', $request->subsId)->delete();
+        if(!empty($uArrT)){
         if(!empty($editTcd)){
-            foreach ($uArr as $key => $value){
+            foreach ($uArrT as $key => $value){
                 $tId = preg_replace('/[^0-9]+/', '', $value);
                 $t = self::where('account_id', $tId)->where('sub_id', $request->subsId)->first();
                 // $a = self::where('account_id', $aId)->delete();
 
                 if (empty($t)){
+                    if (!empty(preg_replace('/[0-9]+/', '', $value))){
                     $t = self::create([
                         'sub_id' => $request->subsId,
                         'tcd_name' => preg_replace('/[0-9]+/', '', $value),
                         'account_id' => $int_var = preg_replace('/[^0-9]/', '', $value)  
-                    ]);
-
+                        
+                            ]);
+                        }
+                    }
                 }
             }
         }

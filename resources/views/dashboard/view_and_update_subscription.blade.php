@@ -7,45 +7,46 @@
     <i class="fa fa-edit"></i>
     VIEW AND UPDATE SUBSCRIPTION
 </div> 
-<div class="row alert-m">
+<div id="update-subs" class="row alert-m">
 </div>
 <div class="card-body">
     <div class="col-md-12">
-    <button class="btn btn-primary btn-xs" 
-        onclick="viewSubscription(this, {{ $subs->id }})" 
-        data-subs-id="{{ $subs->id }}"
-        data-so-number="{{ $subs->so_number }}"
-        data-invoice-date="{{ $subs->invoice_date }}"
-        data-so-date="{{ $subs->so_date }}"
-        data-material-no="{{ $subs->mat_number }}"
-        data-material-desc="{{ $subs->mat_desc }}"
-        data-brand="{{ $subs->brand }}"
-        data-category="{{ $subs->category }}"
-        data-bu="{{ $subs->bu }}"
-        data-assigned-ao="{{ $subs->assigned_ao }}"
-        data-activation-date="{{ $subs->activation_date }}"
-        data-activation-status="{{ $subs->activation_status }}"
-        data-customer-name="{{ $subs->customer_name }}"
-        data-customer-number="{{ $subs->customer_number }}"
-        data-customer-id="{{ $subs->customer_id }}"
-        data-terms="{{ $subs->terms }}"
-        data-p-schedule="{{ $subs->payment_schedule }}" 
-        style="margin-top: -18px; margin-left: -5px;">
-        <i class="fa fa-arrow-left"></i> 
-        BACK
-        </button>
-        <button class="btn btn-primary btn-xs" 
+        <a href="/subscriptions/{{ $subs->id }}">
+            <button class="btn btn-primary btn-xs" 
+                data-subs-id="{{ $subs->id }}"
+                data-so-number="{{ $subs->so_number }}"
+                data-invoice-date="{{ $subs->invoice_date }}"
+                data-so-date="{{ $subs->so_date }}"
+                data-material-no="{{ $subs->mat_number }}"
+                data-material-desc="{{ $subs->mat_desc }}"
+                data-brand="{{ $subs->brand }}"
+                data-category="{{ $subs->category }}"
+                data-bu="{{ $subs->bu }}"
+                data-assigned-ao="{{ $subs->assigned_ao }}"
+                data-activation-date="{{ $subs->activation_date }}"
+                data-activation-status="{{ $subs->activation_status }}"
+                data-customer-name="{{ $subs->customer_name }}"
+                data-customer-number="{{ $subs->customer_number }}"
+                data-customer-id="{{ $subs->customer_id }}"
+                data-terms="{{ $subs->terms }}"
+                data-p-schedule="{{ $subs->payment_schedule }}" 
+                style="margin-top: -18px; margin-left: -5px;">
+                <i class="fa fa-arrow-left"></i> 
+                BACK
+            </button>
+        </a>
+        <!-- <button class="btn btn-primary btn-xs" 
             onclick="manageSubscription(event)"
                 style="margin-top: -18px; margin-left: 3px;">
             <i class="fa fa-list"></i> 
         LIST
-        </button>
-        <button class="btn btn-warning btn-xs pull-right" 
+        </button> -->
+        <!-- <button class="btn btn-warning btn-xs pull-right" 
             onclick="emailNotifs(event)" 
                 style="margin-top: -18px; margin-left: 3px;">
             <i class="fa fa-bell"></i> 
         EMAIL NOTIFICATIONS
-        </button>
+        </button> -->
         <!-- <button class="btn btn-warning btn-xs e_recs" 
             onclick="emailRecipients(this)" 
                 style="margin-top: -18px;">
@@ -73,7 +74,7 @@
         </div>
         <div class="col-md-3">
             <label><b>Activation Date</b></label>
-                <input id="act_style" type="text" class="form-control activation_date" name="activation_date" />
+                <input id="act_style" type="date" class="form-control activation_date" name="activation_date" />
             <span id="u-act-date-text"></span>
         </div>
         <div class="col-md-3">
@@ -85,7 +86,7 @@
         </div>
         <div class="col-md-3">
             <label><b>Brand</b></label>
-                <input id="brand_style" type="text" class="form-control brand" name="brand" />
+                <select id="brand-style" class="form-control brand" name="brand"></select>
             <span id="u-brand-text"></span>
         </div>
         <div class="col-md-6">
@@ -132,6 +133,7 @@
                     <option value="BU1">BU1</option>
                     <option value="BU2">BU2</option>
                     <option value="BU5">BU5</option>
+                    <option value="BU6">BU6</option>
                     <option value="BU8">BU8</option>
                     <option value="BU10">BU10</option>
                     <option value="BU12">BU12</option>
@@ -157,7 +159,7 @@
                             <input type="hidden" class="form-control customer_number_val" name="customer_number" />
                                 <input type="hidden" class="form-control customer_id_val" name="customer_id" />
                                 <div class="input-group-append">
-                            <span style="cursor: pointer;" onclick="openEditCustoModal(event)" class="input-group-text"><i class="fas fa-user-circle"></i></span>
+                            <span style="cursor: pointer;" class="input-group-text"><i class="fas fa-user-circle"></i></span>
                         <span id="customer-name-text" class="data-text"></span>
                     </div>
                 </div>
@@ -166,7 +168,8 @@
         <div class="col-md-6" style="margin-top: 31px;">
         <div class="form-group">
             <div class="input-group mb-3 for-contacts">
-                <input id="customer-name-style" type="text" class="form-control contacts_val" placeholder="Contacts" readonly />
+                <!-- <input id="contact-name-style" type="text" class="form-control contacts_val" placeholder="Contacts" readonly /> -->
+                <select id="contact-name-style" class="form-control u_contact_val"></select>    
                     <div class="input-group-append">
                         <span style="cursor: pointer;" class="input-group-text"><i class="fas fa-address-book"></i></span>
                         <span id="customer-name-text" class="data-text"></span>
@@ -185,42 +188,51 @@
     <div class="col-md-4">
         <div class="form-group">
             <label>Assign PM</label>
-            <select id="pm_name_style" class="select2 ePm" name="pm[]" multiple="multiple" data-placeholder="Select PM Account" style="width: 100%;">
-                @foreach($pM as $key => $value)
-                <option value="{{ $value }}" selected>{{ preg_replace('/[0-9]+/', '', $value) }}</option>
-                @endforeach
-                @foreach($getPm as $gP)
-                <option value="{{ $gP->AccountID .' '. $gP->AccountName }}">{{ $gP->AccountName }}</option>
-                @endforeach
-            </select>
+                <select id="pm_name_style" class="select2 ePm" name="pm[]" multiple="multiple" data-placeholder="Select PM Account" style="width: 100%;">
+                    @if($pM[0] != '[]')
+                    @foreach($pM as $key => $value)
+                    <option value="{{ $value }}" selected>{{ preg_replace('/[0-9]+/', '', $value) }}</option>
+                    @endforeach
+                    @endif
+                
+                    @foreach($getPm as $gP)
+                    <option value="{{ $gP->AccountID .' '. $gP->AccountName }}">{{ $gP->AccountName }}</option>
+                    @endforeach
+                </select>
             <span id="pm-name-text" class="data-text"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label>Assign TCD</label>
-            <select id="tcd_name_style" class="select2 eTcd" name="tcd[]" multiple="multiple" data-placeholder="Select TCD Account" style="width: 100%;">
-                @foreach($tCd as $key => $value)
-                <option value="{{ $value }}" selected>{{ preg_replace('/[0-9]+/', '', $value) }}</option>
-                @endforeach
-                @foreach($getTcd as $gT)
-                <option value="{{ $gT->AccountID .' '. $gT->AccountName }}">{{ $gT->AccountName }}</option>
-                @endforeach
-            </select>
+                <select id="tcd_name_style" class="select2 eTcd" name="tcd[]" multiple="multiple" data-placeholder="Select TCD Account" style="width: 100%;">
+                    @if($tCd[0] != '[]')
+                    @foreach($tCd as $key => $value)
+                    <option value="{{ $value }}" selected>{{ preg_replace('/[0-9]+/', '', $value) }}</option>
+                    @endforeach
+                    @endif
+
+                    @foreach($getTcd as $gT)
+                    <option value="{{ $gT->AccountID .' '. $gT->AccountName }}">{{ $gT->AccountName }}</option>
+                    @endforeach
+                </select>
             <span id="tcd-name-text" class="data-text"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label>Assign CSD</label>
-            <select id="e_csd_name_style" class="select2 eCsd" name="csd[]" multiple="multiple" data-placeholder="Select CSD Account" style="width: 100%;">
-                @foreach($cSd as $key => $value)
-                <option value="{{ $value }}" selected>{{ preg_replace('/[0-9]+/', '', $value) }}</option>
-                @endforeach
-                @foreach($getCsd as $gC)
-                <option value="{{  $gC->AccountID .' '. $gC->AccountName }}">{{ $gC->AccountName }}</option>
-                @endforeach
-            </select>
+                <select id="e_csd_name_style" class="select2 eCsd" name="csd[]" multiple="multiple" data-placeholder="Select CSD Account" style="width: 100%;">
+                    @if($cSd[0] != '[]')
+                    @foreach($cSd as $key => $value)
+                    <option value="{{ $value }}" selected>{{ preg_replace('/[0-9]+/', '', $value) }}</option>
+                    @endforeach
+                    @endif
+
+                    @foreach($getCsd as $gC)
+                    <option value="{{  $gC->AccountID .' '. $gC->AccountName }}">{{ $gC->AccountName }}</option>
+                    @endforeach
+                </select>
             <span id="e-csd-name-text" class="data-text"></span>
         </div>
     </div>

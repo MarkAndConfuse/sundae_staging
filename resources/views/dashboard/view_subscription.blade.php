@@ -1,4 +1,22 @@
-<main class="subs">
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                <!-- <h1 class="m-0 text-dark">Dashboard</h1> -->
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>    
+                    <li class="breadcrumb-item active"> Today is {{ $dateTime }}</li>     
+                </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+@if(session()->get('GoogleName'))
+<main class="main-d">
     <div class="container-fluid"> 
 <div class="row charts-docs">
     <div class="col-xl-12 ">
@@ -9,12 +27,12 @@
 </div> 
 <div class="card-body">
     <div class="col-md-12">
-        <button class="btn btn-primary btn-xs" 
-            onclick="manageSubscription(event)"
-                style="margin-top: -18px; margin-left: -4px;">
-            <i class="fa fa-arrow-left"></i> 
-        BACK
-        </button>
+        <!-- <a style="text-decoratino: none;">
+            <button class="btn btn-primary btn-xs" style="margin-top: -18px; margin-left: -4px;">
+                <i class="fa fa-arrow-left"></i> 
+            BACK
+            </button>
+        </a> -->
         <button class="btn btn-primary btn-xs" 
             onclick="viewAndUpdateSubscription(this, {{ $subs->id }})"
                 data-subs-id="{{ $subs->id }}"
@@ -32,6 +50,7 @@
                     data-customer-name="{{ $subs->customer_name }}"
                     data-customer-number="{{ $subs->customer_number }}"
                     data-customer-id="{{ $subs->customer_id }}"
+                    data-contact-id="{{ $subs->contact_id }}"
                     data-terms="{{ $subs->terms }}"
                     data-p-schedule="{{ $subs->payment_schedule }}" 
                 style="margin-top: -18px; margin-left: 4px;">
@@ -39,12 +58,13 @@
         UPDATE
         </button>
         <button class="btn btn-warning btn-xs" 
+            data-subs-id="{{ $subs->id }}"
             onclick="emailNotifs(this, {{ $subs->id }})" 
                 style="margin-top: -18px; margin-left: 4px;">
             <i class="fa fa-bell"></i> 
         EMAIL NOTIFICATIONS
         </button>
-        @if(session()->get('GoogleName') == 'Mark Edo Escario')
+        <!-- @if(session()->get('GoogleName') == 'Mark Edo Escario')
         <a href="/load_pm/{{ $subs->id }}" style="text-decoration: none;"><button class="btn btn-warning btn-xs e_recs"  
                 style="margin-top: -18px; margin-left: 4px;">
             <i class="fa fa-address-book"></i> 
@@ -64,7 +84,7 @@
             <i class="fa fa-address-book"></i> 
         ASSIGNED CSD
         </button></a>
-        @endif
+        @endif -->
         <!-- <button class="btn btn-warning btn-xs" 
             onclick="fileAttachment(event)" 
                 style="margin-top: -18px; margin-left: 4px">
@@ -72,13 +92,13 @@
         FILE ATTACHMENTS
         </button> -->
     </div> 
-    <hr>
-    <div class="row" style="margin-top: -5px;">
-        <div class="col-md-12">
-            <p>Customer Name: <b style="font-size: 28px;">{{ $subs->customer_name }}</b></p>
-        </div>
-        <div class="col-md-8">
-            <p style="margin-top: -15px;">Contact Person: <b style="text-transform: uppercase;">{{ $contactPerson->ContactName }}</b></p>
+<hr>
+<div class="row" style="margin-top: -5px;">
+    <div class="col-md-12">
+        <p>Customer Name: <b style="font-size: 28px;">{{ $subs->customer_name }}</b></p>
+</div>
+<div class="col-md-8">
+    <p style="margin-top: -15px;">Contact Person: <b style="text-transform: uppercase;">{{ $contactPerson->ContactName }}</b></p>
         </div>
     </div>
     <div class="row">   
@@ -199,8 +219,8 @@
                         @else
                             <td><center><img src="{{ $gAvatar }}" class="img-circle elevation-2" 
                         alt="User Image" style="width: 42px; height: 42px; border-radius:50%" /></center></td> 
-                            <td>{{ $subs->assigned_ao }}</td>
                         @endif
+                        <td>{{ $subs->assigned_ao }}</td>
                         </tr>
                         </tbody>
                         </table>
@@ -324,32 +344,64 @@
                     <tbody>
                         <tr>
                             <td>90 Days Alert</td> 
-                            <td>60 Days Alert</td> 
-                            <td>30 Days Alert</td> 
+                            <td><span style="font-size: 14px;" class="badge bg-danger">{{ $notif90 }}</span></td>
                         </tr>
                         <tr>
-                            <td><span style="font-size: 14px;" class="badge bg-primary">{{ $notif90 }}</span></td>
+                            <td>60 Days Alert</td> 
                             <td><span style="font-size: 14px;" class="badge bg-warning">{{ $notif60 }}</span></td>
-                            <td><span style="font-size: 14px;" class="badge bg-danger">{{ $notif30 }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>30 Days Alert</td> 
+                            <td><span style="font-size: 14px;" class="badge bg-success">{{ $notif30 }}</span></td>
+                        </tr>    
+                        <tr>
+                            <td>15 Days Alert</td> 
+                            <td><span style="font-size: 14px;" class="badge bg-info">{{ $notif15 }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>7 Days Alert</td> 
+                            <td><span style="font-size: 14px;" class="badge bg-secondary">{{ $notif7 }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>1 Day Alert</td> 
+                            <td><span style="font-size: 14px;" class="badge bg-primary">{{ $notif1 }}</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <!-- /.card-body -->
-                    </div>  
+        <!-- /.card-body -->
+    </main>
+</div>  
+        </div>  
+                
+            @include('dashboard.email_notifs_modal')
+            </div>
+@else
+<div class="col-md-12 alert-margin" style="margin-top: 15px;">
+    <div class="alert alert-danger"><div class="fa fa-spinner fa-spin"></div> 
+        Sorry, this is an invalid access. Please ask assistance from
+        Application Development Team / IT Department. Please <a href=".">Log in</a>.</div></div>
+    </div>
+</div>
+@endif
+            </div>  
                 </div>
             </div>
         </div>  
-    </div>
-@include('dashboard.file_attachment_modal')
-</main>
+        </div>  
+                </div>
+            </div>
+            </div>
+            </div>
 <style>
     .subscription-h {
         background-color: #BFBFBF;
         margin-top: -16px;
     }
 </style>
-@include('dashboard.email_notifs_modal')
+
+
+
 
 
 

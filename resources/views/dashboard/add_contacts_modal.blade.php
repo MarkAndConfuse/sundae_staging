@@ -1,7 +1,7 @@
 <div class="modal addContact" role="dialog">
     <div class="modal-dialog modal-xl">
         <div class="modal-content pull-right">
-        <div class="sModalHeader"><p class="header-label"><i class="fa fa-phone"></i> <b>Add Contacts</b></p></div>
+        <div class="sModalHeader"><p class="header-label"><i class="fa fa-plus-circle"></i> <b>Add Contacts</b></p></div>
     <div class="row alert-c">
 </div>
 <div class="modal-body div-docs">
@@ -36,12 +36,12 @@
             <span id="c-email-text"></span>
         </div>
         <div class="col-md-3">
-            <label><b>Mobile Number</b></label>
+            <label><b>Mobile No.</b></label>
                 <input id="c_mobile_style" type="text" class="form-control c_mobile_val" name="Mobile">
             <span id="c-mobile-text"></span>
         </div>
         <div class="col-md-3">
-            <label><b>Telephone</b></label>
+            <label><b>Telephone No.</b></label>
                 <input id="c_tel_style" type="text" class="form-control c_telephone_val" name="Telephone">
             <span id="c-tel-text"></span>
         </div>
