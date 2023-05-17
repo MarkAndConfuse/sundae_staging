@@ -4,6 +4,7 @@ namespace App\Classes\Services\Dashboard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Classes\Constants\Constants;
+use App\Classes\Traits\LogQueries;
 use App\Models\Subscriptions;
 use App\Models\AllContacts;
 use App\Models\AssignPM;
@@ -18,6 +19,8 @@ use Auth;
 
 class AssignPMService
 {
+    use LogQueries;
+
     public function indexView($request)
     {
         try {
@@ -95,6 +98,9 @@ class AssignPMService
     {
         try {
             $addAssignPm =  AssignPM::saveAssignPm($request);
+            $this->saveLogs('Add', 
+                            'Classes/Services/Dashboard/AssignPMService', 
+                            'Add New Assigned PM');
             return $addAssignPm;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -105,6 +111,9 @@ class AssignPMService
     {
         try {
             $addAssignPm =  AssignPM::saveEditAssignPm($request);
+            $this->saveLogs('Edit / Update', 
+                            'Classes/Services/Dashboard/AssignPMService', 
+                            'Edit Assigned PM');
             return $addAssignPm;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -115,6 +124,9 @@ class AssignPMService
     {
         try {
             $deletePm =  AssignPM::saveDeletedPm($request);
+            $this->saveLogs('Delete', 
+                            'Classes/Services/Dashboard/AssignPMService', 
+                            'Delete Assigned PM');
             return $deletePm;
         } catch (Exception $e){
             return $e->getMessage(); 

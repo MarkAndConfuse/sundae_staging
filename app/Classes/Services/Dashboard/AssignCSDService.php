@@ -4,6 +4,7 @@ namespace App\Classes\Services\Dashboard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Classes\Constants\Constants;
+use App\Classes\Traits\LogQueries;
 use App\Models\Subscriptions;
 use App\Models\AllContacts;
 use App\Models\AssignCSD;
@@ -18,6 +19,8 @@ use Auth;
 
 class AssignCSDService
 {
+    use LogQueries;
+
     public function indexView($request)
     {
         try {
@@ -95,6 +98,9 @@ class AssignCSDService
     {
         try {
             $addCsd =  AssignCSD::saveAssignCsd($request);
+            $this->saveLogs('Add', 
+                            'Classes/Services/Dashboard/AssignCSDService', 
+                            'Add New Assigned CSD');
             return $addCsd;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -105,6 +111,9 @@ class AssignCSDService
     {
         try {
             $editAssignCsd =  AssignCSD::saveEditAssignCsd($request);
+            $this->saveLogs('Edit / Update', 
+                            'Classes/Services/Dashboard/AssignCSDService', 
+                            'Edit Assigned CSD');
             return $editAssignCsd;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -115,6 +124,9 @@ class AssignCSDService
     {
         try {
             $deleteCsd =  AssignCSD::saveDeletedCsd($request);
+            $this->saveLogs('Delete', 
+                            'Classes/Services/Dashboard/AssignCSDService', 
+                            'Delete Assigned CSD');
             return $deleteCsd;
         } catch (Exception $e){
             return $e->getMessage(); 

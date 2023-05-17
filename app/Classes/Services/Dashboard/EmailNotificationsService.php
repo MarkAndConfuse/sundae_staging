@@ -4,6 +4,7 @@ namespace App\Classes\Services\Dashboard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Classes\Constants\Constants;
+use App\Classes\Traits\LogQueries;
 use App\Models\Subscriptions;
 use App\Models\AssignTCD;
 use App\Models\EmailNotifs;
@@ -17,6 +18,8 @@ use Auth;
 
 class EmailNotificationsService
 {
+    use LogQueries;
+
     public function indexView($request)
     {
         try {
@@ -51,7 +54,9 @@ class EmailNotificationsService
                         ->where('rec_type', 'to')
                         ->where('em.sub_id', $request->nId)
                         ->get();
-           
+            $this->saveLogs('View', 
+                            'Classes/Services/Dashboard/EmailNotificationsService', 
+                            'View List of Email Notifications');
             return view('dashboard.email_notifs_list', [
                 'dateTime' => $dTime,
                 'emailNotifs' => $emailNotifs
@@ -75,6 +80,9 @@ class EmailNotificationsService
     {
         try {
             $addSingleEmailNotif = EmailNotifs::saveAddSingleEmailNotif($request);
+            $this->saveLogs('Add', 
+                            'Classes/Services/Dashboard/EmailNotificationsService', 
+                            'Add New Email Notification');
             return $addEmailNotif;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -97,6 +105,9 @@ class EmailNotificationsService
     {
         try {
             $updateEmailNotif = EmailNotifs::saveUpdatedEmailNotif($request);
+            $this->saveLogs('Edit / Update', 
+                            'Classes/Services/Dashboard/EmailNotificationsService', 
+                            'Edit Email Notification');
             return $updateEmailNotif;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -107,6 +118,9 @@ class EmailNotificationsService
     {
         try {
             $deleteEmailNotif = EmailNotifs::saveDeletedEmailNotif($request);
+            $this->saveLogs('Delete', 
+                            'Classes/Services/Dashboard/EmailNotificationsService', 
+                            'Delete Email Notification');
             return $deleteEmailNotif;
         } catch (Exception $e){
             return $e->getMessage(); 

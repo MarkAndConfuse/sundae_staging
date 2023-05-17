@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use App\Classes\Constants\Constants;
+use App\Classes\Traits\LogQueries;
 use App\Models\Subscriptions;
 use App\Models\AllContacts;
 use App\Models\CDBAccounts;
@@ -26,11 +27,14 @@ use App\Mail\SubscriptionNotification;
 
 class ManageSubscriptionService
 {
+    use LogQueries;
+
     public function indexView()
     {
         try {
             date_default_timezone_set('Asia/Manila');
             $dTime = date('F j, Y');
+            $this->saveLogs('View', 'Classes/Services/Dashboard/ManageSubscriptionService', 'View List of Subscriptions');
             return view('dashboard.subscription_table', [
                 'dateTime' => $dTime,
             ]);
@@ -127,6 +131,7 @@ class ManageSubscriptionService
             $getTcd = CDBAccounts::where('AccountGroup', 'TCD')->get();
             $getCsd = CDBAccounts::where('AccountGroup', 'CSD')->get();
             $brands = Brands::orderBy('Brand')->get();
+            $this->saveLogs('Add', 'Classes/Services/Dashboard/ManageSubscriptionService', 'Add Subscription');
                 return view('dashboard.add_subscription', [
                     'dateTime' => $dTime,
                     'getPm' => $getPm,
@@ -176,7 +181,7 @@ class ManageSubscriptionService
             $gC = explode(",", $csdData);
             $skips = ["{","}",":","\""];
             $cSd = str_replace($skips, '', $gC);
-
+            $this->saveLogs('Edit / Update', 'Classes/Services/Dashboard/ManageSubscriptionService', 'Update Subscription');
             return view('dashboard.view_and_update_subscription', [
                 'dateTime' => $dTime,
                 'getPm' => $getPm,
@@ -337,7 +342,8 @@ class ManageSubscriptionService
             // } else {
             //     $cP = $contactPerson->ContactName;
             // }
-
+            $this->saveLogs('View', 'Classes/Services/Dashboard/ManageSubscriptionService', 'View Single Subscription');
+            
             return view('dashboard.view_subscription', [
                 'dateTime' => $dTime,
                 'getPm' => $getPm,

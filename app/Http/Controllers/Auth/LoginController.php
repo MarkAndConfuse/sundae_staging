@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Classes\Traits\LogQueries;
 use Socialite;
 use Auth;
 use Exception;
@@ -26,6 +27,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    use LogQueries;
 
     /**
      * Where to redirect users after login.
@@ -39,10 +41,6 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
 
     public function redirectToGoogle()
     {
@@ -68,6 +66,7 @@ class LoginController extends Controller
                 $accounts = CDBAccounts::where('Email', strtoupper($_email))->first();
 
                 session()->put('AccountName', $accounts->AccountName);
+                session()->put('DomainAccount', $accounts->DomainAccount);
                 session()->put('NickName', $accounts->NickName);
 
                 $spName = explode(' ', $accounts->AccountName, 3);
@@ -80,20 +79,10 @@ class LoginController extends Controller
                 session()->put('FirstName', $first_name);
                 session()->put('gAvatar', $accounts->GAvatar);
 
+                $this->saveLogs('Login','Auth/Login Controller','Login user with ICS Gmail');
+
                 return redirect('/dashboard');
             } 
-
-            $accounts = CDBAccounts::where('Email', $user->email)->first();
-
-            session()->put('AccountID', $accounts->AccountID);
-            session()->put('AccountGroup', $accounts->AccountGroup);
-            session()->put('AccountName', $accounts->AccountName);
-            session()->put('NickName', $accounts->NickName);
-            session()->put('GoogleId', $user->id);
-            session()->put('GoogleName', $user->name);
-            session()->put('GoogleEmail', $user->email);
-            session()->put('gAvatar', $accounts->GAvatar);
-            return redirect('/dashboard');
             
         } catch (Exception $e) {
             \Log::info('error: '. $e->getMessage());

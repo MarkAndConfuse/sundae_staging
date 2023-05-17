@@ -4,6 +4,7 @@ namespace App\Classes\Services\Dashboard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Classes\Constants\Constants;
+use App\Classes\Traits\LogQueries;
 use App\Models\Subscriptions;
 use App\Models\AllContacts;
 use App\Models\AssignTCD;
@@ -18,6 +19,8 @@ use Auth;
 
 class AssignTCDService
 {
+    use LogQueries;
+
     public function indexView($request)
     {
         try {
@@ -95,6 +98,9 @@ class AssignTCDService
     {
         try {
             $addTcd =  AssignTCD::saveAssignTcd($request);
+            $this->saveLogs('Add', 
+                            'Classes/Services/Dashboard/AssignTCDService', 
+                            'Add New Assigned TCD');
             return $addTcd;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -105,6 +111,9 @@ class AssignTCDService
     {
         try {
             $editAssignTcd =  AssignTCD::saveEditAssignTcd($request);
+            $this->saveLogs('Edit / Update', 
+                            'Classes/Services/Dashboard/AssignTCDService', 
+                            'Edit Assigned TCD');
             return $editAssignTcd;
         } catch (Exception $e){
             return $e->getMessage(); 
@@ -115,6 +124,9 @@ class AssignTCDService
     {
         try {
             $deleteTcd =  AssignTCD::saveDeletedTcd($request);
+            $this->saveLogs('Delete', 
+                            'Classes/Services/Dashboard/AssignTCDService', 
+                            'Delete Assigned TCD');
             return $deleteTcd;
         } catch (Exception $e){
             return $e->getMessage(); 
