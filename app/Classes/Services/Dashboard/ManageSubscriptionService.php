@@ -34,7 +34,7 @@ class ManageSubscriptionService
         try {
             date_default_timezone_set('Asia/Manila');
             $dTime = date('F j, Y');
-            $this->saveLogs('View', 'Classes/Services/Dashboard/ManageSubscriptionService', 'View List of Subscriptions');
+            // $this->saveLogs('View', 'Classes/Services/Dashboard/ManageSubscriptionService', 'View List of Subscriptions');
             return view('dashboard.subscription_table', [
                 'dateTime' => $dTime,
             ]);
@@ -57,31 +57,15 @@ class ManageSubscriptionService
         }
     }
 
-    public function runner ($request)
-    {
-        // $res = DB::connection('sqlsrv2')->select(DB::raw("SELECT devcusto.dbo.cdbCustomer.CustomerName FROM devcusto.dbo.cdbCustomer 
-        // INNER JOIN devcusto.dbo.vw_AllContact ON devcusto.dbo.vw_AllContact.CustomerID = devcusto.dbo.cdbCustomer.CustomerID"));
-        // \Log::info($res);
-        $subs = Subscriptions::get();
-        // \Log::info('select: '. $subs);
-        $data = [];
-        foreach($subs as $row){
-            $contacts = AllContacts::where('CustomerID', $row->customer_id)->get();
-            if (!empty($contacts)){
-            $data[] =  (object) array(
-                'contacts' => $contacts
-                );
-            }
-        }
-    }
-
     public function subscriptionDataTable($request)
     {
         try {
             $aID = session()->get('AccountID');
+            $aGroup = session()->get('AccountGroup');
             if ($aID == '415'){
-                $querySubscription = DB::table('subscriptions as s')
-                ->get();
+                $querySubscription = DB::table('subscriptions as s')->get();
+            } else if ($aGroup == 'IT'){
+                $querySubscription = DB::table('subscriptions as s')->get();
             } else {
             $querySubscription = DB::table('subscriptions as s')
                 ->where('bu', '!=', 'BU6')->where('ao_id', $aID)
@@ -131,14 +115,14 @@ class ManageSubscriptionService
             $getTcd = CDBAccounts::where('AccountGroup', 'TCD')->get();
             $getCsd = CDBAccounts::where('AccountGroup', 'CSD')->get();
             $brands = Brands::orderBy('Brand')->get();
-            $this->saveLogs('Add', 'Classes/Services/Dashboard/ManageSubscriptionService', 'Add Subscription');
-                return view('dashboard.add_subscription', [
-                    'dateTime' => $dTime,
-                    'getPm' => $getPm,
-                    'getTcd' => $getTcd,
-                    'getCsd' => $getCsd,
-                    'brands' => $brands
-                ]);
+            
+            return view('dashboard.add_subscription', [
+                'dateTime' => $dTime,
+                'getPm' => $getPm,
+                'getTcd' => $getTcd,
+                'getCsd' => $getCsd,
+                'brands' => $brands
+            ]);
         } catch (Exception $e){
             return $e->getMessage(); 
         }
@@ -170,7 +154,6 @@ class ManageSubscriptionService
             $d = explode(",", $pmData);
             $skips = ["{","}",":","\""];
             $pM = str_replace($skips, '', $d);
-            // \Log::info($pM);
           
             $tcdData = AssignTCD::where('sub_id', $request->sId)->pluck('tcd_name', 'account_id');
             $gT = explode(",", $tcdData);
@@ -181,7 +164,7 @@ class ManageSubscriptionService
             $gC = explode(",", $csdData);
             $skips = ["{","}",":","\""];
             $cSd = str_replace($skips, '', $gC);
-            $this->saveLogs('Edit / Update', 'Classes/Services/Dashboard/ManageSubscriptionService', 'Update Subscription');
+            
             return view('dashboard.view_and_update_subscription', [
                 'dateTime' => $dTime,
                 'getPm' => $getPm,
@@ -212,12 +195,15 @@ class ManageSubscriptionService
             if (!empty($subs->activation_date)){
                 $act_date = Carbon::parse($subs->activation_date)->format('F j, Y');
             } else {
-                \Log::info($subs->activation_date);
                 $act_date = $subs->activation_date;
             }
-            $exp_date = Carbon::parse($subs->activation_date)->addYears($subs->terms)->format('F j, Y');
-            // $contactPersons = ContactPersons::where('CustomerId', $subs->customer_id)->get();
             
+            if (!empty($subs->activation_date)){
+                $exp_date = Carbon::parse($subs->activation_date)->addYears($subs->terms)->format('F j, Y');
+            } else {
+                $exp_date = Carbon::parse($currTime)->addYears($subs->terms)->format('F j, Y');
+            }
+           
             $pmDatax = AssignPM::where('sub_id', $request->sId)->pluck('pm_name');
             $d = explode(",", $pmDatax);
             $skips = ["[","]","\""];
@@ -274,7 +260,6 @@ class ManageSubscriptionService
             
             foreach($pTcd as $i){
                 $aTCD[] = Arr::flatten($i);
-                \Log::info($aTCD);
             }
 
             $csdDatax = AssignCSD::where('sub_id', $request->sId)->pluck('csd_name');
@@ -301,7 +286,6 @@ class ManageSubscriptionService
             $pCsd = json_decode(json_encode($cData), TRUE);
             foreach($pCsd as $i){
                 $aCSD[] = Arr::flatten($i);
-                
             }
 
             if (empty($subs->activation_date)){
@@ -336,14 +320,7 @@ class ManageSubscriptionService
             }
 
             $contactPerson = AllContacts::where('ContactID', $subs->contact_id)->first();
-            // $cP = $contactPerson->ContactName;
-            // if($contactPerson->ContactName == ''){
-            //     $cP = 'NONE';
-            // } else {
-            //     $cP = $contactPerson->ContactName;
-            // }
-            $this->saveLogs('View', 'Classes/Services/Dashboard/ManageSubscriptionService', 'View Single Subscription');
-            
+
             return view('dashboard.view_subscription', [
                 'dateTime' => $dTime,
                 'getPm' => $getPm,
@@ -375,20 +352,27 @@ class ManageSubscriptionService
         try {
             date_default_timezone_set('Asia/Manila');
             $dTime = date('F j, Y');
+            $dTimeNow = date('m/d/Y H:i:s');
             $getPm = CDBAccounts::where('AccountGroup', 'PMD')->get();
             $getTcd = CDBAccounts::where('AccountGroup', 'TCD')->get();
             $getCsd = CDBAccounts::where('AccountGroup', 'CSD')->get();
             $subs = Subscriptions::where('id', $request->sId)->first();
             $aoAccounts = CDBAccounts::where('AccountID', $subs->ao_id)->first();
             $inv_date = Carbon::parse($subs->invoice_date)->format('F j, Y');
+            
             if (!empty($subs->activation_date)){
                 $act_date = Carbon::parse($subs->activation_date)->format('F j, Y');
             } else {
                 $act_date = $subs->activation_date;
             }
-            $exp_date = Carbon::parse($subs->activation_date)->addYears($subs->terms)->format('F j, Y');
-            // $contactPersons = ContactPersons::where('CustomerId', $subs->customer_id)->get();
-            
+
+            if (!empty($subs->activation_date)){
+                $exp_date = Carbon::parse($subs->activation_date)->addYears($subs->terms)
+                ->format('F j, Y');
+            } else {
+                $exp_date = Carbon::parse($dTimeNow)->addYears($subs->terms)->format('F j, Y');
+            }
+         
             $pmDatax = AssignPM::where('sub_id', $request->sId)->pluck('pm_name');
             $d = explode(",", $pmDatax);
             $skips = ["[","]","\""];
@@ -445,7 +429,6 @@ class ManageSubscriptionService
             
             foreach($pTcd as $i){
                 $aTCD[] = Arr::flatten($i);
-                \Log::info($aTCD);
             }
 
             $csdDatax = AssignCSD::where('sub_id', $request->sId)->pluck('csd_name');
@@ -507,12 +490,6 @@ class ManageSubscriptionService
             }
             $contactPerson = AllContacts::where('ContactID', $subs->contact_id)->first();
     
-            // $cP = $contactPerson->ContactName;
-            // if($contactPerson->ContactName == ''){
-            //     $cP = 'NONE';
-            // } else {
-            //     $cP = $contactPerson->ContactName;
-            // }
             return view('dashboard.view_link_subs', [
                 'dateTime' => $dTime,
                 'getPm' => $getPm,

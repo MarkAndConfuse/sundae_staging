@@ -27,12 +27,14 @@ class DashboardController extends Controller
 			date_default_timezone_set('Asia/Manila');
 			$dTime = date('F j, Y');
 			$aID = session()->get('AccountID');
+			$aGroup = session()->get('AccountGroup');
 			
 			if ($aID == '415'){
 				$subsTotal = Subscriptions::count();
-			} else {
-			
-			$subsTotal = Subscriptions::where('bu', '!=', 'BU6')
+			} else if ($aGroup == 'IT'){
+                $subsTotal = Subscriptions::count();
+            } else {
+				$subsTotal = Subscriptions::where('bu', '!=', 'BU6')
 						->where('ao_id', $aID)
 						->count();
 			}
