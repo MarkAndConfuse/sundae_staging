@@ -61,20 +61,28 @@ class ManageSubscriptionService
     {
         try {
             $aID = session()->get('AccountID');
-            $aGroup = session()->get('AccountGroup');
-            if ($aID == '415'){
-                $querySubscription = DB::table('subscriptions as s')->get();
-            } else if ($aGroup == 'IT'){
-                $querySubscription = DB::table('subscriptions as s')->get();
+            $bu = session()->get('AccountGroup');
+            $isPM = false;
+            $pmGrp = ['PM','PMD','ESG'];
+
+            if (in_array($bu, $pmGrp)) {
+                $isPM = true;
+            } 
+
+            if ($aID == '415' || $isPM){
+                $querySubscription = DB::table('subscriptions as s')
+                ->where('bu', '<>', 'BU6')
+                ->get();
             } else {
             $querySubscription = DB::table('subscriptions as s')
-                ->where('bu', '!=', 'BU6')->where('ao_id', $aID)
+                ->where('bu', '<>', 'BU6')->where('ao_id', $aID)
                 ->get();
             }
             $results = datatables()->of($querySubscription);
                 return $results
                     ->addColumn('action', function ($data) {
-                        $action = '<a target="_blank" href="/subscriptions/'. $data->id .'" style="text-decoration:none;">
+                        $action = '<a target="_blank" href="/subscriptions/'. $data->id .'" 
+                        style="text-decoration:none;">
                         <button class="btn btn-warning btn-xs" type="button"
                             data-subs-id="'. $data->id .'"
                             data-so-number="'. $data->so_number .'"
@@ -399,7 +407,6 @@ class ManageSubscriptionService
             $p = json_decode(json_encode($data), TRUE);
             foreach($p as $i){
                 $pmA[] = Arr::flatten($i);
-                
             }
 
             $tcdDatax = AssignTCD::where('sub_id', $request->sId)->pluck('tcd_name');
@@ -455,7 +462,6 @@ class ManageSubscriptionService
             $pCsd = json_decode(json_encode($cData), TRUE);
             foreach($pCsd as $i){
                 $aCSD[] = Arr::flatten($i);
-                
             }
 
             if (empty($subs->activation_date)){
